@@ -48,6 +48,14 @@ The project seeks to make the process of looking through universities simple and
 ## Bonus Features
 * Users can compare two or more universities to each other
 * Users can look at universities by major and compare job prospects against the bls job projections.
+* Users can choose universities that are within a certain radius of a desired location.
+
+
+## Wireframe
+
+![Main Display](universtaty_wireframe.png)
+![Info Page](info_page.png)
+
 
 
 
