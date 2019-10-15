@@ -53,8 +53,8 @@ The project seeks to make the process of looking through universities simple and
 
 ## Wireframe
 
-![Main Display](universtaty_wireframe.png)
-![Info Page](info_page.png)
+![Main Display](./src/styles/assets/universtaty_wireframe.png)
+![Info Page](./src/styles/assets/info_page.png)
 
 
 
