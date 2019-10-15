@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "## Overview  As a former high school teacher, a major part of my job was preparing students for university. Students were always overwhelmed by the vast and convoluted college pamphlets and brochures. This visualization if an objective view on college statistics that is meant to be easily digestible.",
   "main": "index.js",
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "webpack:watch": "webpack --watch --config webpack.dev.js",
+    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
   },
   "repository": {
     "type": "git",
