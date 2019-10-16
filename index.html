@@ -15,8 +15,10 @@
     <div class='search-bar'>
         <label for="search-name">Name</label>
         <input class='search-name' type="text">
-        <button id='btn'>Search</button>
+        <input type='button' id='btn' value='search'>
     </div>
+
+    <div id='map' style="width:500px; height:500px;"></div>
 
 
 
@@ -26,5 +28,8 @@
     <!-- <script src='./src/search.js'></script> -->
     <script src="./dist/main.js"></script>
     <script src="./dist/main.scss"></script>
+    <script src="./src/map.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAKCDQyiy7FX0BJL7M9QqliIt31X97TmA&callback=initMap">
+    </script>
 </body>
 </html>
