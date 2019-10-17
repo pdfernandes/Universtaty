@@ -1,3 +1,4 @@
+import { fetchSchoolData } from './fetch';
 export const removeMarkers = () => {
   for (let i = 0; i < window.markers.length; i++) {
     window.markers[i].setMap(null);
@@ -26,6 +27,7 @@ export const formatMarkers = response => {
       map.setCenter(marker.getPosition());
       window.infoWindow.setContent(marker.htmlContent);
       window.infoWindow.open(map, marker);
+
     });
 
     window.markers.push(marker);
