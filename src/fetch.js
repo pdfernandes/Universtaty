@@ -1,5 +1,5 @@
 import { edu_api } from "../api_keys";
-const fetchData = options => {
+export const fetchData = options => {
   return new Promise(function(resolve, reject) {
     const request = new XMLHttpRequest();
     const data = request.open(
@@ -16,4 +16,4 @@ const fetchData = options => {
   });
 };
 
-export default fetchData;
+

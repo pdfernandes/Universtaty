@@ -6,17 +6,10 @@ export const removeMarkers = () => {
 
 export const formatMarkers = response => {
   response.forEach(school => {
-    const contentString = `<div>${school["school.name"]}</div><div id='more-info'>Click here for more info</div>`
-    // const infoWindow = new google.maps.InfoWindow({
-    //   content: contentString
-    // });
+    const contentString = `<div>${
+      school["school.name"]
+    }</div><div id='more-info'>Click for info</div>`;
 
-    // google.maps.event.addListener(infoWindow, "domready", () => {
-    //     document.getElementById("more-info").addEventListener("click", () => {
-    //         document.getElementById("root").innerHTML = "HELLO"
-    //     })
-    // })
- 
     let latLong = {
       lat: school["location.lat"],
       lng: school["location.lon"]
@@ -28,10 +21,10 @@ export const formatMarkers = response => {
     });
 
     marker.addListener("click", function() {
-        debugger
+      debugger;
       map.setZoom(8);
       map.setCenter(marker.getPosition());
-      window.infoWindow.setContent(marker.htmlContent)
+      window.infoWindow.setContent(marker.htmlContent);
       window.infoWindow.open(map, marker);
     });
 
