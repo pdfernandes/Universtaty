@@ -1,53 +1,72 @@
+import { doughnut } from "./doughnut"
 const schoolPage = school => {
-  let academics = {};
-  let admissionsSAT = {};
-  let admissionsACT = {};
-  let cost = {};
-  let aid = {};
-  let demographicsRace = {};
-  let demographicsGender = {};
+  let academics = [];
+  let admissionsSAT = [];
+  let admissionsACT = [];
+  let cost = [];
+  let aid = [];
+  let demographicsRace = [];
+  let demographicsGender = [];
   let admissionRate;
   let completionRate;
 
   for (let category in school) {
     let splitCategory = category.split(".");
     if (splitCategory.includes("academics")) {
-      academics[splitCategory[splitCategory.length - 1]] = school[category];
+      academics.push({
+        label: splitCategory[splitCategory.length - 1],
+        value: school[category]
+      });
     } else if (splitCategory.includes("admissions")) {
       if (splitCategory.includes("act_scores")) {
-        admissionsACT[
-          splitCategory[splitCategory.length - 2] +
+        admissionsACT.push({
+          label: `${splitCategory[splitCategory.length - 2]}_${
             splitCategory[splitCategory.length - 1]
-        ] = school[category];
+          }`,
+          value: school[category]
+        });
       } else if (splitCategory.includes("sat_scores")) {
-        admissionsSAT[
-          splitCategory[splitCategory.length - 2] +
+        admissionsSAT.push({
+          label: `${splitCategory[splitCategory.length - 2]}_${
             splitCategory[splitCategory.length - 1]
-        ] = school[category];
+          }`,
+          value: school[category]
+        });
       } else if (splitCategory.includes("admission_rate")) {
-        admissionRate = school[category];
+        admissionRate = [school[category]];
       }
     } else if (splitCategory.includes("cost")) {
-      cost[splitCategory[splitCategory.length - 1]] = school[category];
+      cost.push({
+        label: splitCategory[splitCategory.length - 1],
+        value: school[category]
+      });
     } else if (splitCategory.includes("aid")) {
-      aid[splitCategory[splitCategory.length - 1]] = school[category];
+      aid.push({
+        label: splitCategory[splitCategory.length - 1],
+        value: school[category]
+      });
     } else if (splitCategory.includes("demographics")) {
-        if (
-          splitCategory[splitCategory.length - 1] === "men" ||
-          splitCategory[splitCategory.length - 1] === "women"
-        ) {
-            demographicsGender[splitCategory[splitCategory.length - 1]] =
-              school[category];
-        } else {
-             demographicsRace[splitCategory[splitCategory.length - 1]] =
-               school[category];
-        }
+      if (
+        splitCategory[splitCategory.length - 1] === "men" ||
+        splitCategory[splitCategory.length - 1] === "women"
+      ) {
+        demographicsGender.push({
+          label: splitCategory[splitCategory.length - 1],
+          value: school[category]
+        });
+      } else {
+        demographicsRace.push({
+          label: splitCategory[splitCategory.length - 1],
+          value: school[category]
+        });
+      }
     } else if (splitCategory.includes("completion")) {
-      completionRate = school[category];
-    } 
+      completionRate = [school[category]];
+    }
   }
-
   debugger;
+
+    doughnut(academics)
 
   //this function will sort the school data into its categories and hook onto different object within the div container
 };
