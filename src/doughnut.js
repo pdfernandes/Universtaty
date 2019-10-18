@@ -47,8 +47,10 @@ export const doughnut = data => {
     .data(gen)
     .enter()
     .append("path")
+    .attr("class", "arc")
     .attr("d", segments)
     .attr("fill", d => colors(d.data.value));
+    
 
   let legends = svg
                 .append("g")
@@ -65,8 +67,11 @@ export const doughnut = data => {
       legend
         .append("text")
         .text(function(d) {
-            let label = d.data.label[0].toUpperCase() + d.data.label.slice(1)
-          return `${label} ${(d.data.value * 100).toFixed(2)}%`;
+            let upperCaseLabel = d.data.label.split("_")
+          upperCaseLabel = upperCaseLabel.map(word => {
+              return word[0].toUpperCase() + word.slice(1)
+          }).join(" ")
+          return `${upperCaseLabel} ${(d.data.value * 100).toFixed(2)}%`;
         })
         .attr("fill", d => colors(d.data.value))
         .attr("x", 25)
