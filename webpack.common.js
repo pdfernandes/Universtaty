@@ -39,7 +39,7 @@ module.exports = {
             ]
         },
         {
-            test: /\.scss/,
+            test: /\.css/,
             use: [{
                 loader: MiniCssExtractPlugin.loader,
                 options: {
@@ -59,8 +59,8 @@ module.exports = {
     plugins: [new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // all options are optional
-        filename: "main.scss",
-        chunkFilename: "main.scss",
+        filename: "main.css",
+        chunkFilename: "main.css",
         ignoreOrder: false // Enable to remove warnings about conflicting order
     }), require("autoprefixer")]
 };

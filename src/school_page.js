@@ -67,8 +67,6 @@ const schoolPage = school => {
   }
   debugger;
 
-    barChart(academics)
-
   //this function will sort the school data into its categories and hook onto different object within the div container
 };
 
