@@ -7,7 +7,7 @@ export const removeMarkers = () => {
 
 export const formatMarkers = response => {
   response.forEach(school => {
-    const contentString = `<div>${
+    const contentString = `<div id="school-name">${
       school["school.name"]
     }</div><div id='more-info'>Click for info</div>`;
 

@@ -31,7 +31,6 @@ body {
     padding: 40px;
     border-radius: 5px;
     border: 1px solid #588B8B;
-
 }
 
 .title{
@@ -86,4 +85,21 @@ div > label {
 .search-name:focus {
     background-color: rgb(240,240,240);
 }
+
+#school-name {
+    font-weight:400;
+}
+
+
+#more-info {
+    width: 100%;
+    color: blue;
+    text-align: center;
+}
+
+#more-info:hover {
+    text-decoration: underline;
+}
+
+
 
