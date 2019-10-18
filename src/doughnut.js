@@ -4,17 +4,25 @@ import * as d3 from "d3";
 export const doughnut = data => {
   //
   debugger;
-  const colors = d3.scaleOrdinal(d3.schemePaired);
+  let painting = [];
+  for (let i = 0; i < data.length; i++) {
+      painting.push('#'+Math.floor(Math.random()*16777215).toString(16))  
+  }
+
+  const colors = d3.scaleOrdinal()
+  .range(painting)
+  
   const margin = { top: 20, right: 20, bottom: 20, left: 20 },
-    width = 750 - margin.right - margin.left,
-    height = 750 - margin.top - margin.bottom,
-    radius = width / 4;
+    width = 750,
+    height = 500;
+    // radius = width / 4;
 
   //   arc generator
   const segments = d3
     .arc()
-    .outerRadius(radius - 10)
-    .innerRadius(radius - 100);
+    .innerRadius(100)
+    .outerRadius(200)
+    // .innerRadius(radius - 100);
 
   const gen = d3
     .pie()
@@ -31,8 +39,10 @@ export const doughnut = data => {
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .append("g")
-    .attr("transform", "translate(" + width / 4 + "," + height / 4 + ")")
+
+    const sections = svg.append("g")
+    // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    .attr("transform", "translate(200, 200)")
     .selectAll("path")
     .data(gen)
     .enter()
@@ -40,13 +50,12 @@ export const doughnut = data => {
     .attr("d", segments)
     .attr("fill", d => colors(d.data.value));
 
-  let legends = d3.select(".pie")
-                .append("svg")
+  let legends = svg
                 .append("g")
-                .attr("transform", "translate(350, 200)")
+                .attr("transform", "translate(450, 50)")
                 .selectAll(".legends").data(gen);
     
-    let legend = legends.enter().append("g").classed("legends", true).attr("transform", function(d,i){return "translate(0," + (i + 1)* + ")";});
+    let legend = legends.enter().append("g").classed("legends", true).attr("transform", function(d,i){return "translate(0," + (i + 1)*30 + ")";});
     legend
       .append("rect")
       .attr("width", 20)
@@ -56,11 +65,12 @@ export const doughnut = data => {
       legend
         .append("text")
         .text(function(d) {
-          return d.data.label;
+            let label = d.data.label[0].toUpperCase() + d.data.label.slice(1)
+          return `${label} ${(d.data.value * 100).toFixed(2)}%`;
         })
         .attr("fill", d => colors(d.data.value))
-        .attr("x", 20)
-        .attr("y", 30);
+        .attr("x", 25)
+        .attr("y", 15);
 
 
     
