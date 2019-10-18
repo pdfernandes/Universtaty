@@ -4,33 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/c147d9240a.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type="text/css" href="./dist/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
     <title>Universtaty</title>
   </head>
   <body>
-    <div id="root" class="main">
-      <div class="title">
-        <h1>Universtaty</h1>
-        <h2>Your education, your way</h2>
+    <div id="root">
+      <div class='main'>
+        <div class='main-left'>
+          <div class='heading-search-container'>
+            <div class="title">
+              <h1><i class="fas fa-graduation-cap"></i>Universtaty</h1>
+              <h2>Your education, your way</h2>
+            </div>
+            <div class="search-bar">
+              <label for="search-name">University Name</label>
+              <input class="search-name" type="text" placeholder="e.g. CUNY Hunter College" />
+              <input type="button" id="btn" value="search" />
+            </div>
+          </div>
+
+        </div>
+        <div id="map"></div>
+
       </div>
-      <div class="search-bar">
-        <label for="search-name">Name</label>
-        <input class="search-name" type="text" />
-        <input type="button" id="btn" value="search" />
+      <div id="school-page">
+          <div class='pie'></div>
+          <div class='bar'>
+            <input class="sort" type='checkbox'>Sort by Most Popular Major</input>
+          </div>
       </div>
-      <div id="map" style="width:500px; height:500px;"></div>
     </div>
 
-    <div id="school-page">
-        <div class='pie'></div>
-        <div class='bar'>
-          <input class="sort" type='checkbox'>Sort by Most Popular Major</input>
-        </div>
-    </div>
 
     <!-- <script src='./src/search.js'></script> -->
     <script src="./dist/main.js"></script>
-    <link rel='stylesheet' type="text/css" href="./dist/main.css"></link>
+    
     <script src="./src/map.js"></script>
     <script
       async

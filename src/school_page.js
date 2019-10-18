@@ -65,7 +65,8 @@ const schoolPage = school => {
       completionRate = [school[category]];
     }
   }
-  debugger;
+  barChart(academics);
+  doughnut(demographicsGender)
 
   //this function will sort the school data into its categories and hook onto different object within the div container
 };

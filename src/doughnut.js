@@ -9,6 +9,8 @@ export const doughnut = data => {
       painting.push('#'+Math.floor(Math.random()*16777215).toString(16))  
   }
 
+  d3.select("#pie-chart").remove();
+
   const colors = d3.scaleOrdinal()
   .range(painting)
   
@@ -39,6 +41,7 @@ export const doughnut = data => {
     .append("svg")
     .attr("width", width)
     .attr("height", height)
+    .attr("id", "pie-chart")
 
     const sections = svg.append("g")
     // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")

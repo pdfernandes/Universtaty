@@ -1,5 +1,5 @@
-import "./styles/index.scss";
 import "./styles/css_reset.css";
+import "./styles/index.scss";
 import * as d3 from "d3";
 import { fetchData, fetchSchoolData } from "./fetch";
 import { removeMarkers, formatMarkers } from "./markers";
