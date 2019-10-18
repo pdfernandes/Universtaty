@@ -1,4 +1,5 @@
 import { doughnut } from "./doughnut"
+import { barChart } from "./bar";
 const schoolPage = school => {
   let academics = [];
   let admissionsSAT = [];
@@ -66,7 +67,7 @@ const schoolPage = school => {
   }
   debugger;
 
-    doughnut(demographicsGender)
+    barChart(academics)
 
   //this function will sort the school data into its categories and hook onto different object within the div container
 };
