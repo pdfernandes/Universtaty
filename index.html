@@ -4,47 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="https://kit.fontawesome.com/c147d9240a.js" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type="text/css" href="./dist/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/c147d9240a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./dist/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Universtaty</title>
   </head>
   <body>
     <div id="root">
-      <div class='main'>
-        <div class='main-left'>
-          <div class='heading-search-container'>
+      <div class="main">
+        <div class="main-left">
+          <div class="heading-search-container">
             <div class="title">
               <h1><i class="fas fa-graduation-cap"></i>Universtaty</h1>
               <h2>Your education, your way</h2>
             </div>
             <div class="search-bar">
               <label for="search-name">University Name</label>
-              <input class="search-name" type="text" placeholder="e.g. CUNY Hunter College" />
+              <input
+                class="search-name"
+                type="text"
+                placeholder="e.g. CUNY Hunter College"
+              />
               <input type="button" id="btn" value="search" />
             </div>
           </div>
-
         </div>
         <div id="map"></div>
-
       </div>
-      <div id="school-page">
-          <div class='pie'></div>
-          <div class='bar'>
-            <input class="sort" type='checkbox'>Sort by Most Popular Major</input>
-          </div>
+      <div class="hidden" id="school-page">
+        <div class="school-info-buttons">
+          <button id="academics-info">Majors</button>
+          <button id="gender-demographics-info">Gender Demographics</button>
+          <button id="race-demographics-info">Race Demographics</button>
+          <button id="act-admissions-info">ACT Statistics</button>
+          <button id="sat-admissions-info">SAT Statistics</button>
+          <h1 id="school-name"></h1>
+        </div>
+        <div class='chart'></div>
+        <!-- <div class="pie"></div>
+        <div class="bar">
+          <label>
+            Sort by Most Popular Major
+            <input class="sort" type="checkbox" />
+          </label>
+        </div> -->
       </div>
-      <div class='matching-schools'>
-
-      </div>
+      <div class="matching-schools"></div>
     </div>
-
 
     <!-- <script src='./src/search.js'></script> -->
     <script src="./dist/main.js"></script>
-    
+
     <script src="./src/map.js"></script>
     <script
       async

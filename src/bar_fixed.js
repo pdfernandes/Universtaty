@@ -1,21 +1,23 @@
 import * as d3 from "d3";
 
 export const barChart = dataSet => {
+  debugger;
   dataSet.forEach((datum, i) => {
     return (datum.order = i);
   });
   let svg, bandScale;
   const createChart = () => {
-      d3.select("#bar-chart").remove();
-    svg = d3.select(".bar").append("svg");
+    d3.select("#bar-chart").remove();
+    d3.select("#pie-chart").remove();
+    svg = d3.select(".chart").append("svg");
 
     let painting = [];
     for (let i = 0; i < dataSet.length; i++) {
-        let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
-        if (color === "#ffffff") {
-           "#" + Math.floor(Math.random() * 16777215).toString(16);
-        }
-        painting.push(color)
+      let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+      if (color === "#ffffff") {
+        "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }
+      painting.push(color);
     }
 
     const colors = d3.scaleOrdinal().range(painting);
@@ -23,7 +25,10 @@ export const barChart = dataSet => {
     const h = 300,
       w = 600;
 
-    svg.attr("height", h).attr("width", w).attr("id","bar-chart");
+    svg
+      .attr("height", h)
+      .attr("width", w)
+      .attr("id", "bar-chart");
 
     const labels = dataSet.map(datum => {
       return datum.label;
@@ -59,13 +64,14 @@ export const barChart = dataSet => {
       .attr("fill", d => colors(d.value))
       .append("title")
       .text(d => {
-          let upperCaseLabel = d.label.split("_")
-          upperCaseLabel = upperCaseLabel.map(word => {
-              return word[0].toUpperCase() + word.slice(1)
-          }).join(" ")
-        return(
-           `${upperCaseLabel} ${(d.value * 100).toFixed(2)}%`
-      )});
+        let upperCaseLabel = d.label.split("_");
+        upperCaseLabel = upperCaseLabel
+          .map(word => {
+            return word[0].toUpperCase() + word.slice(1);
+          })
+          .join(" ");
+        return `${upperCaseLabel}: ${d.value}`;
+      });
 
     // const yScale = d3
     //   .scaleLinear()
@@ -88,9 +94,6 @@ export const barChart = dataSet => {
     //   .attr("x", 0)
     //   .attr("y", 0)
     //   .call(d3.axisBottom(xScale))
-
-
-
   };
 
   createChart();

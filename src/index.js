@@ -3,7 +3,7 @@ import "./styles/index.scss";
 import * as d3 from "d3";
 import { fetchData, fetchSchoolData } from "./fetch";
 import { removeMarkers, formatMarkers } from "./markers";
-import schoolPage from './school_page';
+import schoolPageContainer from './school_page_container';
 
 document.addEventListener("DOMContentLoaded", () => {
   window.markers = [];
@@ -24,7 +24,7 @@ document.getElementById("btn").addEventListener("click", () => {
                     debugger
                     //animate the search page away
                     //animate the show page in
-                    schoolPage(school);
+                    schoolPageContainer(school);
                 }
             });
     
@@ -33,10 +33,10 @@ document.getElementById("btn").addEventListener("click", () => {
     });
   });
   removeMarkers();
-  let options = [];
+  // let options = [];
   const value = document.getElementsByClassName("search-name")[0].value;
-  options.push(value);
-  fetchData(options).then(response => {
+  // options.push(value);
+  fetchData(value).then(response => {
     formatMarkers(response);
   });
 });

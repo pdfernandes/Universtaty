@@ -1,74 +1,52 @@
-import { doughnut } from "./doughnut"
-import { barChart } from "./bar";
-const schoolPage = school => {
-  let academics = [];
-  let admissionsSAT = [];
-  let admissionsACT = [];
-  let cost = [];
-  let aid = [];
-  let demographicsRace = [];
-  let demographicsGender = [];
-  let admissionRate;
-  let completionRate;
+import { barChartPercentage } from "./bar_percent";
+import { doughnut } from "./doughnut";
+import { barChart } from "./bar_fixed"
 
-  for (let category in school) {
-    let splitCategory = category.split(".");
-    if (splitCategory.includes("academics")) {
-      academics.push({
-        label: splitCategory[splitCategory.length - 1],
-        value: school[category]
-      });
-    } else if (splitCategory.includes("admissions")) {
-      if (splitCategory.includes("act_scores")) {
-        admissionsACT.push({
-          label: `${splitCategory[splitCategory.length - 2]}_${
-            splitCategory[splitCategory.length - 1]
-          }`,
-          value: school[category]
-        });
-      } else if (splitCategory.includes("sat_scores")) {
-        admissionsSAT.push({
-          label: `${splitCategory[splitCategory.length - 2]}_${
-            splitCategory[splitCategory.length - 1]
-          }`,
-          value: school[category]
-        });
-      } else if (splitCategory.includes("admission_rate")) {
-        admissionRate = [school[category]];
-      }
-    } else if (splitCategory.includes("cost")) {
-      cost.push({
-        label: splitCategory[splitCategory.length - 1],
-        value: school[category]
-      });
-    } else if (splitCategory.includes("aid")) {
-      aid.push({
-        label: splitCategory[splitCategory.length - 1],
-        value: school[category]
-      });
-    } else if (splitCategory.includes("demographics")) {
-      if (
-        splitCategory[splitCategory.length - 1] === "men" ||
-        splitCategory[splitCategory.length - 1] === "women"
-      ) {
-        demographicsGender.push({
-          label: splitCategory[splitCategory.length - 1],
-          value: school[category]
-        });
-      } else {
-        demographicsRace.push({
-          label: splitCategory[splitCategory.length - 1],
-          value: school[category]
-        });
-      }
-    } else if (splitCategory.includes("completion")) {
-      completionRate = [school[category]];
-    }
-  }
-  // barChart(academics);
-  // doughnut(demographicsGender)
+const schoolPage = info => {
+  debugger;
+  let {
+    academics,
+    admissionRate,
+    admissionsACT,
+    admissionsSAT,
+    aid,
+    completionRate,
+    cost,
+    demographicsRace,
+    demographicsGender
+  } = info;
 
-  //this function will sort the school data into its categories and hook onto different object within the div container
+  let schoolPage = document.getElementById("school-page");
+  schoolPage.classList.remove("hidden");
+  //   school.className = "active";
+  //   let div = document.createElement("div");
+  //   div.className = 'school-info-buttons'
+  //   div.textContent = "Hello my name is div"
+  //   schoolPage.appendChild(div);
+  debugger
+
+  document.getElementById("academics-info").addEventListener("click", () => {
+    barChartPercentage(academics);
+  });
+
+  document.getElementById("gender-demographics-info").addEventListener("click", () => {
+    doughnut(demographicsGender);
+  });
+
+  document.getElementById("race-demographics-info").addEventListener("click", () => {
+    doughnut(demographicsRace);
+  });
+
+  document.getElementById("sat-admissions-info").addEventListener("click", () => {
+   debugger
+    barChart(admissionsSAT);
+  });
+
+  document.getElementById("act-admissions-info").addEventListener("click", () => {
+    debugger
+    barChart(admissionsACT);
+  });
+
 };
 
 export default schoolPage;

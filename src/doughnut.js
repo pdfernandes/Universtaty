@@ -10,6 +10,7 @@ export const doughnut = data => {
   }
 
   d3.select("#pie-chart").remove();
+  d3.select("#bar-chart").remove();
 
   const colors = d3.scaleOrdinal()
   .range(painting)
@@ -32,12 +33,12 @@ export const doughnut = data => {
     .value(d => {
       return d.value;
     })(data);
-  console.log(gen);
+
 
   //   define svg
 
   const svg = d3
-    .select(".pie")
+    .select(".chart")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
