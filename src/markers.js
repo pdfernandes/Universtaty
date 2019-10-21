@@ -22,7 +22,7 @@ export const formatMarkers = response => {
     });
 
     marker.addListener("click", function() {
-      debugger;
+    
       map.setZoom(8);
       map.setCenter(marker.getPosition());
       window.infoWindow.setContent(marker.htmlContent);

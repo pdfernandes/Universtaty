@@ -1,7 +1,6 @@
 import * as d3 from "d3";
 
 export const barChart = dataSet => {
-  debugger;
   dataSet.forEach((datum, i) => {
     return (datum.order = i);
   });

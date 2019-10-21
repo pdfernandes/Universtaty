@@ -1,5 +1,4 @@
 const search = (options) => {
-    debugger
 
     
     // let ele = document.getElementById("root")

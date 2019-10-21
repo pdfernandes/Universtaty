@@ -16,12 +16,12 @@ document.getElementById("btn").addEventListener("click", () => {
     document.getElementById("more-info").addEventListener("click", (e) => {
         let schoolName = e.target.previousSibling.textContent;
         sessionStorage.setItem('schoolName', schoolName) 
-        debugger
+        
         fetchSchoolData(schoolName)
         .then((response) => {
             response.forEach(school => {
                 if (school["school.name"] === sessionStorage.getItem("schoolName")) {
-                    debugger
+                    
                     //animate the search page away
                     //animate the show page in
                     schoolPageContainer(school);

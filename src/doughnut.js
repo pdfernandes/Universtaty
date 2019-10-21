@@ -3,7 +3,7 @@ import * as d3 from "d3";
 
 export const doughnut = data => {
   //
-  debugger;
+
   let painting = [];
   for (let i = 0; i < data.length; i++) {
       painting.push('#'+Math.floor(Math.random()*16777215).toString(16))  

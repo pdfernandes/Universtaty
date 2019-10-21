@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 
 export const barChartPercentage = dataSet => {
-  debugger
+
   dataSet.forEach((datum, i) => {
     return (datum.order = i);
   });

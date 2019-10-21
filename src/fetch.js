@@ -1,13 +1,13 @@
 import { edu_api } from "../api_keys";
 export const fetchData = (options) => {
-  debugger
+  
   let formattedOptions = options.split(" ")
   formattedOptions = formattedOptions.map(word => {
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
   })
 
   formattedOptions = formattedOptions.join(" ")
-  debugger
+  
 
   return new Promise(function(resolve, reject) {
     const request = new XMLHttpRequest();
@@ -34,7 +34,7 @@ export const fetchSchoolData = school => {
       true
     );
     request.onload = function(data) {
-        debugger
+        
       let info = JSON.parse(data.currentTarget.response);
       let { results } = info;
       resolve(results);

@@ -70,7 +70,6 @@ const schoolPageContainer = school => {
       completionRate = [school[category]];
     }
   }
-  debugger
 
   let info = {
     schoolName,
