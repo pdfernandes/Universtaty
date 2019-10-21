@@ -5,6 +5,7 @@ import { barChart } from "./bar_fixed"
 const schoolPage = info => {
   debugger;
   let {
+    schoolName,
     academics,
     admissionRate,
     admissionsACT,
@@ -17,7 +18,11 @@ const schoolPage = info => {
   } = info;
 
   let schoolPage = document.getElementById("school-page");
+  debugger
+  document.getElementById("school-page-name").textContent = schoolName;
+  debugger
   schoolPage.classList.remove("hidden");
+
   //   school.className = "active";
   //   let div = document.createElement("div");
   //   div.className = 'school-info-buttons'

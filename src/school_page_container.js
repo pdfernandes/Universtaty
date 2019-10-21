@@ -4,6 +4,7 @@ import schoolPage from "./school_page";
 
 // school page is responsible for getting all the fetched data and properly sorting it into its respective categories
 const schoolPageContainer = school => {
+  let schoolName = school["school.name"]
   let academics = [];
   let admissionsSAT = [];
   let admissionsACT = [];
@@ -69,8 +70,10 @@ const schoolPageContainer = school => {
       completionRate = [school[category]];
     }
   }
+  debugger
 
   let info = {
+    schoolName,
     academics,
     admissionsACT,
     admissionsSAT,
