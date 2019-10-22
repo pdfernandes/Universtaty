@@ -50,7 +50,7 @@ export const barChart = dataSet => {
 
     const colors = d3.scaleOrdinal().range(painting);
 
-    const h = 260,
+    const h = 300,
       w = 600, margin = {top:20, bottom: 20, left: 20, right: 20};
 
     svg
@@ -77,7 +77,7 @@ export const barChart = dataSet => {
     const heightScale = d3
       .scaleLinear()
       .domain([0, maxValue])
-      .range([0, h - margin.top - margin.bottom]);
+      .range([0, h - margin.top - margin.bottom - 40]);
 
     svg
       .selectAll("rect")
@@ -110,8 +110,19 @@ export const barChart = dataSet => {
         .text(d => {
           return d.value;
         })
-        .attr("x", (d, i) => bandScale(d.label))
-        .attr("y", d => h - heightScale(d.value));
+        .attr("text-anchor", "middle")
+        .attr("transform", function(d, i) {
+          return (
+            "translate( " +
+            (bandScale(d.label) + bandScale.bandwidth() / 2) +
+            " , " +
+            (h - heightScale(d.value)) +
+            ")," +
+            "rotate(0)"
+          );
+        })
+        .attr("x", 0)
+        .attr("y", 0);
   };
 
 

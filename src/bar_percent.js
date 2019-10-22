@@ -117,7 +117,7 @@ export const barChartPercentage = data => {
       .attr("transform", function(d, i) {
         return (
           "translate( " +
-          (bandScale(d.label) + 5) +
+          (bandScale(d.label) + bandScale.bandwidth() / 2) +
           " , " +
          (h -
           heightScale(d.value) -
