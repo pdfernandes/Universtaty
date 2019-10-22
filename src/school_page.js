@@ -17,6 +17,9 @@ const schoolPage = info => {
     demographicsGender
   } = info;
 
+  let promptUser = document.getElementsByClassName("prompt-user-container")[0]
+  promptUser.className = "hidden"
+
   let schoolPage = document.getElementById("school-page");
   
   document.getElementById("school-page-name").textContent = schoolName;
@@ -29,6 +32,7 @@ const schoolPage = info => {
   //   div.textContent = "Hello my name is div"
   //   schoolPage.appendChild(div);
   
+  //DRY this
 
   document.getElementById("academics-info").addEventListener("click", () => {
     barChartPercentage(academics);
@@ -89,7 +93,7 @@ const schoolPage = info => {
   generalStats.innerHTML =
   `
   <div class='at-a-glance-info'>
-    <h1>Completion Rate</h1>
+    <h1>4-Year Graduation Rate</h1>
     <h2>${(completionRate * 100).toFixed(2)}%</h2>
   </div>
   <div class='at-a-glance-info'>
