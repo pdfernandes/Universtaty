@@ -88,15 +88,15 @@ const schoolPage = info => {
   let generalStats = document.getElementById("general-stats")
   generalStats.innerHTML =
   `
-  <div class='completion-rate'>
+  <div class='at-a-glance-info'>
     <h1>Completion Rate</h1>
     <h2>${(completionRate * 100).toFixed(2)}%</h2>
   </div>
-  <div class='completion-rate'>
+  <div class='at-a-glance-info'>
     <h1>Admission Rate</h1>
     <h2>${(admissionRate * 100).toFixed(2)}%</h2>
   </div>
-  <div class='completion-rate'>
+  <div class='at-a-glance-info'>
     <h1>Pell Grant Percentage</h1>
     <h2>${(aid[0].value * 100).toFixed(2)}%</h2>
   </div>
