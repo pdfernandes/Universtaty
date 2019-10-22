@@ -17,14 +17,14 @@ export const doughnut = data => {
   
   const margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = 750,
-    height = 500;
+    height = 320;
     // radius = width / 4;
 
   //   arc generator
   const segments = d3
     .arc()
     .innerRadius(100)
-    .outerRadius(200)
+    .outerRadius(150)
     // .innerRadius(radius - 100);
 
   const gen = d3
@@ -34,6 +34,33 @@ export const doughnut = data => {
       return d.value;
     })(data);
 
+    function responsivefy(svg) {
+      // get container + svg aspect ratio
+      var container = d3.select(svg.node().parentNode),
+        width = parseInt(svg.style("width")),
+        height = parseInt(svg.style("height")),
+        aspect = width / height;
+
+      // add viewBox and preserveAspectRatio properties,
+      // and call resize so that svg resizes on inital page load
+      svg
+        .attr("viewBox", "0 0 " + width + " " + height)
+        .attr("perserveAspectRatio", "xMinYMid")
+        .call(resize);
+
+      // to register multiple listeners for same event type,
+      // you need to add namespace, i.e., 'click.foo'
+      // necessary if you call invoke this function for multiple svgs
+      // api docs: https://github.com/mbostock/d3/wiki/Selections#on
+      d3.select(window).on("resize." + container.attr("id"), resize);
+
+      // get width of container and resize svg to fit it
+      function resize() {
+        var targetWidth = parseInt(container.style("width"));
+        svg.attr("width", targetWidth);
+        svg.attr("height", Math.round(targetWidth / aspect));
+      }
+    }
 
   //   define svg
 
@@ -42,11 +69,12 @@ export const doughnut = data => {
     .append("svg")
     .attr("width", width)
     .attr("height", height)
+    .call(responsivefy)
     .attr("id", "pie-chart")
 
     const sections = svg.append("g")
     // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-    .attr("transform", "translate(200, 200)")
+    .attr("transform", "translate(200, 160)")
     .selectAll("path")
     .data(gen)
     .enter()
@@ -58,7 +86,7 @@ export const doughnut = data => {
 
   let legends = svg
                 .append("g")
-                .attr("transform", "translate(450, 50)")
+                .attr("transform", "translate(430, 1)")
                 .selectAll(".legends").data(gen);
     
     let legend = legends.enter().append("g").classed("legends", true).attr("transform", function(d,i){return "translate(0," + (i + 1)*30 + ")";});

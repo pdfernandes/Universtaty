@@ -1,111 +1,148 @@
 body {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-    background-color: whitesmoke;
-}
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  background-color: whitesmoke; }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
+  display: flex;
+  flex-direction: column;
+  padding: 0; }
+
 .main {
-    display: flex;
-/*     padding-top: 20px; */
-/*     padding-bottom: 20px; */
-    background-color:#3DA35D;
-    box-sizing: content-box;
-}
+  display: flex;
+  /*     padding-top: 20px; */
+  /*     padding-bottom: 20px; */
+  background-color: #3DA35D;
+  box-sizing: content-box; }
+
 .main-left {
-    width: 50%;
-    display:flex;
-    background-color: #3DA35D;
-    padding: 20px 0;
-}
+  width: 50%;
+  display: flex;
+  background-color: #3DA35D;
+  padding: 20px 0; }
 
 .heading-search-container {
-    margin: 0 auto;
-    background-color: #ffffff;
-    box-sizing: content-box;
-    padding: 40px;
-    border-radius: 5px;
-    border: 1px solid #588B8B;
-}
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-sizing: content-box;
+  padding: 40px;
+  border-radius: 5px;
+  border: 1px solid #588B8B; }
 
-.title{
-    margin-bottom: 50px;
-    background-color: #ffffff;
-}
+.title {
+  margin-bottom: 50px;
+  background-color: #ffffff; }
+
 .title > h1 {
-    font-size: 40px;
-}
+  font-size: 40px; }
 
 .title > h2 {
-    font-size: 20px;
-    text-align:center;
-}
-
+  font-size: 20px;
+  text-align: center; }
 
 .search-bar {
-    height: 50%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-}
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center; }
 
 #map {
-    width: 50%;
-    border: 1px solid #588B8B;
-    border-radius: 0px;
-}
+  width: 50%;
+  border: 1px solid #588B8B;
+  border-radius: 0px; }
 
 div > label {
-    font-size: 20px;
-}
+  font-size: 20px; }
 
 .search-name {
-    padding: 5px 20px;
-    border: 1px solid #090474;
-    border-radius: 8px;
-    width:100%;
-    background-color: white; 
-}
+  padding: 5px 20px;
+  border: 1px solid #090474;
+  border-radius: 8px;
+  width: 100%;
+  background-color: white; }
 
 #btn {
-    margin-top: 10px;
-    background-color: #588B8B;
-    padding: 5px 10px;
-    border-radius: 4px;
-    color: white;
-}
-
+  margin-top: 10px;
+  background-color: #588B8B;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: white; }
 
 .search-name:focus {
-    background-color: rgb(240,240,240);
-}
+  background-color: #f0f0f0; }
 
 #school-name {
-    font-weight:400;
-}
-
+  font-weight: 400; }
 
 #more-info {
-    width: 100%;
-    color: blue;
-    text-align: center;
-}
+  width: 100%;
+  color: blue;
+  text-align: center; }
 
 #more-info:hover {
-    text-decoration: underline;
-}
+  text-decoration: underline; }
 
 .hidden {
-     display: none;
-}
-
+  display: none !important; }
 
 .active {
-    display: block;
+  display: block; }
+
+#school-page {
+  display: flex;
+  width: 100%; }
+
+.school-page-main {
+  width: 50%; }
+
+#school-page-name {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  border-bottom: 1px solid #FFEAEE;
+  background-color: #CDE6F5;
+  color: black; }
+
+.school-info-buttons {
+  display: flex;
+  justify-content: center; }
+
+.school-info-buttons > button {
+  font-size: 12px;
+  margin: 4px 4px;
+  text-align: center;
+  padding: 4px 6px;
+  background: #3A405A;
+  font-weight: 800;
+  color: white;
+  border-radius: 4px; }
+
+.school-page-side-container {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  background-color: lightcoral;
+  justify-content: center; }
+
+.school-page-side {
+  background-color: aliceblue;
+  width: 30%;
+
 }
+
+.at-a-glance {
+  display: flex;
+  justify-content: center; }
+
+.at-a-glance > h1 {
+  font-size: 28px;
+  font-weight: 800; }
+
+#general-stats {
+  margin: 0 auto; }
+
+#general-stats > div {
+  display: flex;
+  justify-content: space-between; }

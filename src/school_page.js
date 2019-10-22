@@ -97,7 +97,7 @@ const schoolPage = info => {
     <h2>${(admissionRate * 100).toFixed(2)}%</h2>
   </div>
   <div class='completion-rate'>
-    <h1>Pell Grant Recipient Percentage</h1>
+    <h1>Pell Grant Percentage</h1>
     <h2>${(aid[0].value * 100).toFixed(2)}%</h2>
   </div>
   <div class='completion-rate'>
