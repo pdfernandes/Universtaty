@@ -149,6 +149,10 @@ div > label {
   border-radius: 4px;
 }
 
+.school-info-buttons > button:hover {
+    background-color: #8da7be;
+}
+
 .school-page-side-container {
   display: flex;
   width: 50%;
@@ -172,7 +176,7 @@ div > label {
   background-color: #8da7be;
   box-sizing: border-box;
   border-radius: 4px 4px 0 0;
-  margin: 0;
+  margin: 0 0 10px 0;
   padding: 5px 0px;
 }
 
@@ -181,6 +185,7 @@ div > label {
   font-size: 28px;
   font-weight: 800;
   color: white;
+  margin-bottom: 5px;
 }
 
 #general-stats {
@@ -202,7 +207,6 @@ div > label {
 #general-stats > div > h1 {
   font-size: 18px;
   font-weight: 800;
-  margin-bottom: 10px;
 }
 
 .cost-info > ul {

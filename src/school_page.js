@@ -34,25 +34,37 @@ const schoolPage = info => {
   
   //DRY this
 
+  function removeSpinner () {
+    let spinner = document.getElementsByClassName("prompt-user-button")[0]
+    if (spinner.className.split(" ").includes("hidden")) {
+      return
+    } else {
+      spinner.className += " " + "hidden"
+    }
+  }
+
   document.getElementById("academics-info").addEventListener("click", () => {
+    removeSpinner()
     barChartPercentage(academics);
   });
 
   document.getElementById("gender-demographics-info").addEventListener("click", () => {
+    removeSpinner();
     doughnut(demographicsGender);
   });
 
   document.getElementById("race-demographics-info").addEventListener("click", () => {
+    removeSpinner();
     doughnut(demographicsRace);
   });
 
   document.getElementById("sat-admissions-info").addEventListener("click", () => {
- 
+ removeSpinner();
     barChart(admissionsSAT);
   });
 
   document.getElementById("act-admissions-info").addEventListener("click", () => {
-
+removeSpinner();
     barChart(admissionsACT);
   });
   //review this
