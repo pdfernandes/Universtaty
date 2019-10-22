@@ -49,7 +49,7 @@ export const barChart = dataSet => {
 
     const colors = d3.scaleOrdinal().range(painting);
 
-    const h = 250,
+    const h = 260,
       w = 600;
 
     svg

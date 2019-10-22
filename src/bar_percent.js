@@ -50,7 +50,7 @@ export const barChartPercentage = dataSet => {
 
     const colors = d3.scaleOrdinal().range(painting);
 
-    const h = 250,
+    const h = 260,
       w = 600;
 
     svg.attr("height", h).attr("width", w).call(responsivefy).attr("id","bar-chart");

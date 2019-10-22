@@ -17,7 +17,7 @@ export const doughnut = data => {
   
   const margin = { top: 20, right: 20, bottom: 20, left: 20 },
     width = 750,
-    height = 320;
+    height = 360;
     // radius = width / 4;
 
   //   arc generator
@@ -74,7 +74,7 @@ export const doughnut = data => {
 
     const sections = svg.append("g")
     // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-    .attr("transform", "translate(200, 160)")
+    .attr("transform", "translate(200, 180)")
     .selectAll("path")
     .data(gen)
     .enter()

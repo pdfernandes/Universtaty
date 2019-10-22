@@ -100,7 +100,7 @@ const schoolPage = info => {
     <h1>Pell Grant Percentage</h1>
     <h2>${(aid[0].value * 100).toFixed(2)}%</h2>
   </div>
-  <div class='completion-rate'>
+  <div class='cost-info'>
     <h1>Average Cost</h1>
     ${createList(cost)}
   </div>
