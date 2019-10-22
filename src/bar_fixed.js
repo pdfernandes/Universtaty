@@ -5,6 +5,7 @@ export const barChart = dataSet => {
     return (datum.order = i);
   });
   let svg, bandScale;
+
   const createChart = () => {
     d3.select("#bar-chart").remove();
     d3.select("#pie-chart").remove();
@@ -50,11 +51,11 @@ export const barChart = dataSet => {
     const colors = d3.scaleOrdinal().range(painting);
 
     const h = 260,
-      w = 600;
+      w = 600, margin = {top:20, bottom: 20, left: 20, right: 20};
 
     svg
-      .attr("height", h)
-      .attr("width", w)
+      .attr("height", h - margin.top - margin.bottom)
+      .attr("width", w - margin.left - margin.right)
       .call(responsivefy)
       .attr("id", "bar-chart");
 
@@ -71,12 +72,12 @@ export const barChart = dataSet => {
     bandScale = d3
       .scaleBand()
       .domain(labels)
-      .range([0, w])
+      .range([0, w - margin.left - margin.right])
       .padding(0.1);
     const heightScale = d3
       .scaleLinear()
       .domain([0, maxValue])
-      .range([0, h]);
+      .range([0, h - margin.top - margin.bottom]);
 
     svg
       .selectAll("rect")
@@ -101,28 +102,18 @@ export const barChart = dataSet => {
         return `${upperCaseLabel}: ${d.value}`;
       });
 
-    // const yScale = d3
-    //   .scaleLinear()
-    //   .domain([
-    //     0,
-    //     d3.max(dataSet, function(d, i) {
-    //       return d.value;
-    //     })
-    //   ])
-    //   .range([h, 0])
-    //   .nice();
-
-    // const xScale = d3
-    //   .scaleBand()
-    //   .domain(labels)
-    //   .range([0, w]);
-
-    //   const xAxis = svg.append("g")
-    //   .classed("xAxis", true)
-    //   .attr("x", 0)
-    //   .attr("y", 0)
-    //   .call(d3.axisBottom(xScale))
+      svg
+        .selectAll("text")
+        .data(dataSet)
+        .enter()
+        .append("text")
+        .text(d => {
+          return d.value;
+        })
+        .attr("x", (d, i) => bandScale(d.label))
+        .attr("y", d => h - heightScale(d.value));
   };
+
 
   createChart();
 
