@@ -30,6 +30,10 @@ const schoolPage = info => {
   debugger
   schoolPage.classList.remove("hidden");
 
+  if (document.getElementsByTagName("svg")[0] !== undefined) {
+    barChartPercentage(academics);
+  }
+
   //   school.className = "active";
   //   let div = document.createElement("div");
   //   div.className = 'school-info-buttons'
