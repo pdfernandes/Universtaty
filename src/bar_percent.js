@@ -91,8 +91,8 @@ export const barChartPercentage = data => {
       .enter()
       .append("rect")
       .attr("x", (d, i) => bandScale(d.label))
-      .attr("y", d => h - margin.top - margin.bottom - heightScale(d.value))
-      .attr("height", d => heightScale(d.value))
+      .attr("y", d => h - margin.top - margin.bottom - heightScale(0))
+      .attr("height", d => heightScale(0))
       .attr("width", d => {
         return bandScale.bandwidth();
       })
@@ -117,21 +117,45 @@ export const barChartPercentage = data => {
         return `${(d.value * 100).toFixed(2)}%`;
       })
       .classed("rotation", true)
-      .attr("text-anchor", "start")
-      .attr("transform", function(d, i) {
-        return (
-          "translate( " +
-          (bandScale(d.label) + bandScale.bandwidth() / 2) +
-          " , " +
-          (h - heightScale(d.value) - 2 * margin.top) +
-          ")," +
-          "rotate(-70)"
-        );
-      })
       .attr("x", 0)
       .attr("y", 0);
+
+      svg
+        .selectAll("text")
+        .transition()
+        .duration(800)
+        .attr("text-anchor", "start")
+        .attr("transform", function(d, i) {
+          return (
+            "translate( " +
+            (bandScale(d.label) + bandScale.bandwidth() / 2) +
+            " , " +
+            (h - heightScale(d.value) - 2 * margin.top) +
+            ")," +
+            "rotate(-70)"
+          );
+        })
+        .delay(function(d, i) {
+          return i * 100;
+        });
     // .attr("x", (d, i) => bandScale(d.label))
     // .attr("y", d => h - heightScale(d.value) - 2 * margin.top);
+
+    //animation
+
+        svg
+          .selectAll("rect")
+          .transition()
+          .duration(800)
+          .attr("y", function(d) {
+            return h - margin.top - margin.bottom - heightScale(d.value);
+          })
+          .attr("height", function(d) {
+            return heightScale(d.value);
+          })
+          .delay(function(d, i) {
+            return i * 100;
+          });
   };
 
   if (dataSet.length === 0) {

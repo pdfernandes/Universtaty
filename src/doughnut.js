@@ -8,12 +8,12 @@ export const doughnut = dataSet => {
   });
   debugger;
 
-  if (data.length === 0) {
-    nullValueIndicator();
-    return;
-  } else {
-    prepareChartArea();
-  }
+  // if (data.length === 0) {
+  //   nullValueIndicator();
+  //   return;
+  // } else {
+  //   prepareChartArea();
+  // }
 
   let painting = [];
   for (let i = 0; i < data.length; i++) {
@@ -42,7 +42,7 @@ export const doughnut = dataSet => {
     .sort(null)
     .value(d => {
       return d.value;
-    })(data);
+    });
 
   function responsivefy(svg) {
     // get container + svg aspect ratio
@@ -79,33 +79,49 @@ export const doughnut = dataSet => {
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .call(responsivefy)
-    .attr("id", "pie-chart");
+    .attr("id", "pie-chart")
+    .append("g")
+    .attr("transform", "translate(" + width / 4 + "," + height / 2 + ")")
+    .call(responsivefy);
 
   const sections = svg
-    .append("g")
-    // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-    .attr("transform", "translate(200, 180)")
-    .selectAll("path")
-    .data(gen)
-    .enter()
-    .append("path")
-    .attr("class", "arc")
-    .attr("d", segments)
-    .attr("fill", d => colors(d.data.value));
+  // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+  .selectAll(".arc")
+  .data(gen(data))
+  .enter()
+  .append("g")
+  .attr("class", "arc")
+
+  sections.append("path")
+    .style("fill", d => colors(d.data.value))
+    .transition()
+    .delay(function(d,i) {
+      return i * 100;
+    })
+    .duration(500)
+    .attrTween('d', function(d) {
+      debugger
+      let i = d3.interpolate(d.startAngle+0.1, d.endAngle);
+      return function(t) {
+        d.endAngle = i(t);
+        return segments(d)
+      }
+    })
+    // .attr("d", segments)
 
   let legends = svg
     .append("g")
-    .attr("transform", "translate(430, 1)")
+    .classed("legends-container", true)
+    .attr("transform", "translate(" + width / 3 + "," + -180 + ")")
     .selectAll(".legends")
-    .data(gen);
+    .data(gen(data));
 
   let legend = legends
     .enter()
     .append("g")
     .classed("legends", true)
     .attr("transform", function(d, i) {
-      return "translate(0," + (i + 1) * 30 + ")";
+      return "translate(0," + (i + 1) * 25 + ")";
     });
   legend
     .append("rect")

@@ -1,15 +1,15 @@
 import * as d3 from "d3";
-import { nullValueIndicator, prepareChartArea } from "./null_value_indicator"
+import { nullValueIndicator, prepareChartArea } from "./null_value_indicator";
 
 export const barChart = data => {
- let dataSet = data.filter(ele => {
-   return ele.value !== 0 && ele.value !== null;
- });
-  
- debugger;
- dataSet.forEach((datum, i) => {
-   return (datum.order = i);
- });
+  let dataSet = data.filter(ele => {
+    return ele.value !== 0 && ele.value !== null;
+  });
+
+  debugger;
+  dataSet.forEach((datum, i) => {
+    return (datum.order = i);
+  });
   let svg, bandScale;
 
   const createChart = () => {
@@ -56,7 +56,8 @@ export const barChart = data => {
     const colors = d3.scaleOrdinal().range(painting);
 
     const h = 330,
-      w = 600, margin = {top:20, bottom: 20, left: 20, right: 20};
+      w = 600,
+      margin = { top: 20, bottom: 20, left: 20, right: 20 };
 
     svg
       .attr("height", h - margin.top - margin.bottom)
@@ -90,8 +91,8 @@ export const barChart = data => {
       .enter()
       .append("rect")
       .attr("x", (d, i) => bandScale(d.label))
-      .attr("y", d => h + 20 - heightScale(d.value))
-      .attr("height", d => heightScale(d.value))
+      .attr("y", d => h + 20 - heightScale(0))
+      .attr("height", d => heightScale(0))
       .attr("width", d => {
         return bandScale.bandwidth();
       })
@@ -107,72 +108,93 @@ export const barChart = data => {
         return `${upperCaseLabel}: ${d.value}`;
       });
 
-      svg
-        .selectAll("text")
-        .data(dataSet)
-        .enter()
-        .append("text")
-        .classed("rotation", true)
-        .text(d => {
-          let upperCaseLabel = d.label.split("_");
-          upperCaseLabel = upperCaseLabel
-            .map(word => {
-              if (word === 'cumulative') {
-                return "Cum."
-              } else {
+    svg
+      .selectAll("text")
+      .data(dataSet)
+      .enter()
+      .append("text")
+      .classed("rotation", true)
+      .text(d => {
+        let upperCaseLabel = d.label.split("_");
+        upperCaseLabel = upperCaseLabel
+          .map(word => {
+            if (word === "cumulative") {
+              return "Cum.";
+            } else {
+              return word[0].toUpperCase() + word.slice(1);
+            }
+          })
+          .join(" ");
+        return `${upperCaseLabel} : ${d.value}`;
+      })
+      .attr("x", 0)
+      .attr("y", 0);
 
-                return word[0].toUpperCase() + word.slice(1);
-              }
-            })
-            .join(" ");
-          return `${upperCaseLabel} : ${d.value}`;
-        })
-        .attr("text-anchor", "start")
-        .attr("transform", function(d, i) {
-          return (
-            "translate( " +
-            (bandScale(d.label) + bandScale.bandwidth() / 2) +
-            " , " +
-            (h + 20 - heightScale(d.value)) +
-            ")," +
-            "rotate(-75)"
-          );
-        })
-        .attr("x", 0)
-        .attr("y", 0);
+    svg
+      .selectAll("text")
+      .transition()
+      .duration(800)
+      .attr("text-anchor", "start")
+      .attr("transform", function(d, i) {
+        return (
+          "translate( " +
+          (bandScale(d.label) + bandScale.bandwidth() / 2) +
+          " , " +
+          (h + 20 - heightScale(d.value)) +
+          ")," +
+          "rotate(-75)"
+        );
+      })
+      .delay(function(d, i) {
+        return i * 100;
+      });
 
-        // svg
-        //   .selectAll("labels")
-        //   .data(dataSet)
-        //   .enter()
-        //   .append("text")
-        //   .classed("label", true)
-        //   .text(d => {
-        //     let upperCaseLabel = d.label.split("_");
-        //     upperCaseLabel = upperCaseLabel
-        //       .map(word => {
-        //         return word[0].toUpperCase() + word.slice(1);
-        //       })
-        //       .join(" ");
-        //     return `${upperCaseLabel}`;
-        //   })
-        //   .attr("text-anchor", "end")
-        //   .attr("transform", function(d, i) {
-        //     return (
-        //       "translate( " +
-        //       (bandScale(d.label) + bandScale.bandwidth() / 2) +
-        //       " , " +
-        //       (h - 70) +
-        //       ")," +
-        //       "rotate(0)"
-        //     );
-        //   })
-        //   .attr("x", 0)
-        //   .attr("y", 0);
-      
-      
+    //animation
+
+    svg
+      .selectAll("rect")
+      .transition()
+      .duration(800)
+      .attr("y", function(d) {
+        return h + 20 - heightScale(d.value);
+      })
+      .attr("height", function(d) {
+        return heightScale(d.value);
+      })
+      .delay(function(d, i) {
+        return i * 100;
+      });
+
+    // svg
+    //   .selectAll("labels")
+    //   .data(dataSet)
+    //   .enter()
+    //   .append("text")
+    //   .classed("label", true)
+    //   .text(d => {
+    //     let upperCaseLabel = d.label.split("_");
+    //     upperCaseLabel = upperCaseLabel
+    //       .map(word => {
+    //         return word[0].toUpperCase() + word.slice(1);
+    //       })
+    //       .join(" ");
+    //     return `${upperCaseLabel}`;
+    //   })
+    //   .attr("text-anchor", "end")
+    //   .attr("transform", function(d, i) {
+    //     return (
+    //       "translate( " +
+    //       (bandScale(d.label) + bandScale.bandwidth() / 2) +
+    //       " , " +
+    //       (h - 70) +
+    //       ")," +
+    //       "rotate(0)"
+    //     );
+    //   })
+    //   .attr("x", 0)
+    //   .attr("y", 0);
   };
-  
+
   if (dataSet.length === 0) {
     nullValueIndicator();
   } else {
