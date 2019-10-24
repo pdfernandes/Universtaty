@@ -1,9 +1,11 @@
 import * as d3 from "d3";
-import { nullValueIndicator } from "./null_value_indicator"
+import { nullValueIndicator, prepareChartArea } from "./null_value_indicator";
 
 export const barChartPercentage = data => {
-  let dataSet = data.filter(ele => {return ele.value !== 0 && ele.value !== null})
-  debugger
+  let dataSet = data.filter(ele => {
+    return ele.value !== 0 && ele.value !== null;
+  });
+  debugger;
   dataSet.forEach((datum, i) => {
     return (datum.order = i);
   });
@@ -121,20 +123,23 @@ export const barChartPercentage = data => {
           "translate( " +
           (bandScale(d.label) + bandScale.bandwidth() / 2) +
           " , " +
-         (h -
-          heightScale(d.value) -
-          2 * margin.top) +
+          (h - heightScale(d.value) - 2 * margin.top) +
           ")," +
           "rotate(-70)"
         );
       })
       .attr("x", 0)
-      .attr("y", 0)
-      // .attr("x", (d, i) => bandScale(d.label))
-      // .attr("y", d => h - heightScale(d.value) - 2 * margin.top);
+      .attr("y", 0);
+    // .attr("x", (d, i) => bandScale(d.label))
+    // .attr("y", d => h - heightScale(d.value) - 2 * margin.top);
   };
-  nullValueIndicator(dataSet)
-  createChart();
+
+  if (dataSet.length === 0) {
+    nullValueIndicator();
+  } else {
+    prepareChartArea();
+    createChart();
+  }
 
   d3.select(".sort").on("change", change);
   function change() {

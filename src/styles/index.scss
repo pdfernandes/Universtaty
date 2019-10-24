@@ -72,7 +72,7 @@ div > label {
 }
 
 .search-name {
-  padding: 5px 20px;
+  padding: 5px 5px;
   border: 1px solid #090474;
   border-radius: 8px;
   width: 100%;
@@ -338,6 +338,22 @@ div > label {
 
 .rotation {
   font-size: 8px;
+}
+
+
+.null-warning {
+    display: flex;
+    text-align: center;
+}
+
+.null-warning > h1 {
+    margin: 20%;
+    color: #1E1B18;
+    padding: 50px;
+    box-sizing: content-box-box;
+    background-color: #D8315B;
+    border-radius: 4px;
+  
 }
 
 

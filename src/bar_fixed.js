@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { nullValueIndicator } from "./null_value_indicator"
+import { nullValueIndicator, prepareChartArea } from "./null_value_indicator"
 
 export const barChart = data => {
  let dataSet = data.filter(ele => {
@@ -172,9 +172,13 @@ export const barChart = data => {
       
       
   };
-
-  nullValueIndicator(dataSet)
-  createChart();
+  
+  if (dataSet.length === 0) {
+    nullValueIndicator();
+  } else {
+    prepareChartArea();
+    createChart();
+  }
 
   d3.select(".sort").on("change", change);
   function change() {
