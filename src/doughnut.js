@@ -6,6 +6,7 @@ export const doughnut = dataSet => {
   let data = dataSet.filter(ele => {
     return ele.value !== 0 && ele.value !== null;
   });
+  prepareChartArea()
   debugger;
 
   // if (data.length === 0) {
