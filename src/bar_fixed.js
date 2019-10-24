@@ -2,7 +2,7 @@ import * as d3 from "d3";
 
 export const barChart = data => {
  let dataSet = data.filter(ele => {
-   return ele.value !== 0;
+   return ele.value !== 0 && ele.value !== null;
  });
  debugger;
  dataSet.forEach((datum, i) => {

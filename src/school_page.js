@@ -86,7 +86,19 @@ const schoolPage = info => {
   //review this
 
   function currencyFormat(num) {
+    if (num === null) {
+      return "N/A"
+    }
+
     return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
+
+  function generalStatsFormat(data) {
+    if (data[0] === null) {
+      return "N/A"
+    }
+
+    return `${(data * 100).toFixed(2)}%`
   }
 
   function titleCase(string) {
@@ -118,15 +130,15 @@ const schoolPage = info => {
   generalStats.innerHTML = `
   <div class='at-a-glance-info'>
     <h1>4-Year Graduation Rate</h1>
-    <h2>${(completionRate * 100).toFixed(2)}%</h2>
+    <h2>${generalStatsFormat(completionRate)}</h2>
   </div>
   <div class='at-a-glance-info'>
     <h1>Admission Rate</h1>
-    <h2>${(admissionRate * 100).toFixed(2)}%</h2>
+    <h2>${generalStatsFormat(admissionRate)}</h2>
   </div>
   <div class='at-a-glance-info'>
     <h1>Pell Grant Percentage</h1>
-    <h2>${(aid[0].value * 100).toFixed(2)}%</h2>
+    <h2>${generalStatsFormat(aid[0].value)}</h2>
   </div>
   <div class='cost-info'>
     <h1>Average Cost</h1>
