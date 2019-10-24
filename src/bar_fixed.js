@@ -1,9 +1,13 @@
 import * as d3 from "d3";
 
-export const barChart = dataSet => {
-  dataSet.forEach((datum, i) => {
-    return (datum.order = i);
-  });
+export const barChart = data => {
+ let dataSet = data.filter(ele => {
+   return ele.value !== 0;
+ });
+ debugger;
+ dataSet.forEach((datum, i) => {
+   return (datum.order = i);
+ });
   let svg, bandScale;
 
   const createChart = () => {
@@ -50,7 +54,7 @@ export const barChart = dataSet => {
 
     const colors = d3.scaleOrdinal().range(painting);
 
-    const h = 300,
+    const h = 330,
       w = 600, margin = {top:20, bottom: 20, left: 20, right: 20};
 
     svg
@@ -85,7 +89,7 @@ export const barChart = dataSet => {
       .enter()
       .append("rect")
       .attr("x", (d, i) => bandScale(d.label))
-      .attr("y", d => h - heightScale(d.value))
+      .attr("y", d => h + 20 - heightScale(d.value))
       .attr("height", d => heightScale(d.value))
       .attr("width", d => {
         return bandScale.bandwidth();
@@ -107,22 +111,65 @@ export const barChart = dataSet => {
         .data(dataSet)
         .enter()
         .append("text")
+        .classed("rotation", true)
         .text(d => {
-          return d.value;
+          let upperCaseLabel = d.label.split("_");
+          upperCaseLabel = upperCaseLabel
+            .map(word => {
+              if (word === 'cumulative') {
+                return "Cum."
+              } else {
+
+                return word[0].toUpperCase() + word.slice(1);
+              }
+            })
+            .join(" ");
+          return `${upperCaseLabel} : ${d.value}`;
         })
-        .attr("text-anchor", "middle")
+        .attr("text-anchor", "start")
         .attr("transform", function(d, i) {
           return (
             "translate( " +
             (bandScale(d.label) + bandScale.bandwidth() / 2) +
             " , " +
-            (h - heightScale(d.value)) +
+            (h + 20 - heightScale(d.value)) +
             ")," +
-            "rotate(0)"
+            "rotate(-75)"
           );
         })
         .attr("x", 0)
         .attr("y", 0);
+
+        // svg
+        //   .selectAll("labels")
+        //   .data(dataSet)
+        //   .enter()
+        //   .append("text")
+        //   .classed("label", true)
+        //   .text(d => {
+        //     let upperCaseLabel = d.label.split("_");
+        //     upperCaseLabel = upperCaseLabel
+        //       .map(word => {
+        //         return word[0].toUpperCase() + word.slice(1);
+        //       })
+        //       .join(" ");
+        //     return `${upperCaseLabel}`;
+        //   })
+        //   .attr("text-anchor", "end")
+        //   .attr("transform", function(d, i) {
+        //     return (
+        //       "translate( " +
+        //       (bandScale(d.label) + bandScale.bandwidth() / 2) +
+        //       " , " +
+        //       (h - 70) +
+        //       ")," +
+        //       "rotate(0)"
+        //     );
+        //   })
+        //   .attr("x", 0)
+        //   .attr("y", 0);
+      
+      
   };
 
 
