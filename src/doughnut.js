@@ -1,7 +1,14 @@
 //margin and radius
 import * as d3 from "d3";
+import { nullValueIndicator } from './null_value_indicator'
 
-export const doughnut = data => {
+export const doughnut = dataSet => {
+    let data = dataSet.filter(ele => {
+      return ele.value !== 0 && ele.value !== null;
+    });
+    debugger;
+
+    nullValueIndicator(data)
   //
 
   let painting = [];

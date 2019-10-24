@@ -1,11 +1,13 @@
 import * as d3 from "d3";
+import { nullValueIndicator } from "./null_value_indicator"
 
 export const barChartPercentage = data => {
-  let dataSet = data.filter(ele => {return ele.value !== 0})
+  let dataSet = data.filter(ele => {return ele.value !== 0 && ele.value !== null})
   debugger
   dataSet.forEach((datum, i) => {
     return (datum.order = i);
   });
+
   let svg, bandScale;
   const createChart = () => {
     d3.select("#bar-chart").remove();
@@ -131,7 +133,7 @@ export const barChartPercentage = data => {
       // .attr("x", (d, i) => bandScale(d.label))
       // .attr("y", d => h - heightScale(d.value) - 2 * margin.top);
   };
-
+  nullValueIndicator(dataSet)
   createChart();
 
   d3.select(".sort").on("change", change);

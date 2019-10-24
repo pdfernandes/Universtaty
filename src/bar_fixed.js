@@ -1,9 +1,11 @@
 import * as d3 from "d3";
+import { nullValueIndicator } from "./null_value_indicator"
 
 export const barChart = data => {
  let dataSet = data.filter(ele => {
    return ele.value !== 0 && ele.value !== null;
  });
+  
  debugger;
  dataSet.forEach((datum, i) => {
    return (datum.order = i);
@@ -14,7 +16,6 @@ export const barChart = data => {
     d3.select("#bar-chart").remove();
     d3.select("#pie-chart").remove();
     svg = d3.select(".chart").append("svg");
-
     let painting = [];
     for (let i = 0; i < dataSet.length; i++) {
       let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
@@ -172,7 +173,7 @@ export const barChart = data => {
       
   };
 
-
+  nullValueIndicator(dataSet)
   createChart();
 
   d3.select(".sort").on("change", change);
