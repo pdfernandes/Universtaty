@@ -1,6 +1,8 @@
 import { barChartPercentage } from "./bar_percent";
 import { doughnut } from "./doughnut";
 import { barChart } from "./bar_fixed";
+import anime from "animejs/lib/anime.es.js";
+
 
 const schoolPage = info => {
   let {
@@ -28,7 +30,9 @@ const schoolPage = info => {
   debugger;
   document.getElementById("school-page-name").textContent = schoolName;
   debugger;
+
   schoolPage.classList.remove("hidden");
+
 
   if (document.getElementsByTagName("svg")[0] !== undefined) {
     barChartPercentage(academics);
@@ -54,7 +58,7 @@ const schoolPage = info => {
   document.getElementById("academics-info").addEventListener("click", () => {
     removeSpinner();
     barChartPercentage(academics);
-    
+
   });
 
   document

@@ -4,6 +4,7 @@ import * as d3 from "d3";
 import { fetchData, fetchSchoolData } from "./fetch";
 import { removeMarkers, formatMarkers } from "./markers";
 import schoolPageContainer from './school_page_container';
+import anime from "animejs/lib/anime.es.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   window.markers = [];
@@ -24,10 +25,40 @@ document.getElementById("btn").addEventListener("click", () => {
         .then((response) => {
             response.forEach(school => {
                 if (school["school.name"] === sessionStorage.getItem("schoolName")) {
+
+                    let promptUser = document.getElementsByClassName(
+                      "prompt-user-container"
+                    )[0];
+                    if (promptUser !== undefined) {
+                      anime({
+                        targets: ".prompt-user-container",
+                        translateX: '100vw',
+                        easing: "linear",
+                        duration: 800,
+                        complete: () => {
+  
+                          schoolPageContainer(school);
+                            anime({
+                              targets: ".school-page-main",
+                              translateY: ["100vh", 0],
+                              easing: "linear"
+                            });
+                            anime({
+                              targets: ".school-page-side-container",
+                              translateY: ["100vh", 0],
+                              translateX: ["100vw", 0],
+                              easing: "linear"
+                            });
+                        }
+                      });
+                    } else {
+                      schoolPageContainer(school);
+                    }
+                    // setTimeout(schoolPageContainer(school), 4000);
                     
                     //animate the search page away
                     //animate the show page in
-                    schoolPageContainer(school);
+                    // schoolPageContainer(school);
                 }
             });
         })
