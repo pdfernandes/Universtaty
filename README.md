@@ -43,9 +43,7 @@ The project seeks to make the process of looking through universities simple and
 
 
 ## Wireframe
-
-![Main Display](./src/styles/assets/universtaty_wireframe.png)
-![Info Page](./src/styles/assets/info_page.png)
+![display](https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/staty_wf.png)
 
 
 
