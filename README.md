@@ -9,8 +9,8 @@ As a former high school teacher, a major part of my job was preparing students f
 The project seeks to make the process of looking through universities simple and interactive. Students are able to search for universities, view statistics on gender demographics, majors and more!
 
 ## Content
-* [Technologies](technologies)
-* [Project Timeline](project-timeline)
+* [Technologies](#technologies)
+* [Project Timeline](#project-timeline)
 
 ## Technologies 
 * D3.js
