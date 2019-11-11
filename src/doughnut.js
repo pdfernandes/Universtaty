@@ -16,10 +16,32 @@ export const doughnut = dataSet => {
   //   prepareChartArea();
   // }
 
-  let painting = [];
-  for (let i = 0; i < data.length; i++) {
-    painting.push("#" + Math.floor(Math.random() * 16777215).toString(16));
-  }
+  let painting = [
+    "#058ED9",
+    "#A1E8AF",
+    "#73628A",
+    "#E7BB41",
+    "#44BBA4",
+    "#FA7921",
+    "#E63462",
+    "#17BEBB",
+    "#FE5F55",
+    "#DD99BB",
+    "#06D6A0",
+    "#087E8B",
+    "#FF5A5F",
+    "#70EE9C",
+    "#073B3A",
+    "#08A045",
+    "#CA054D",
+    "#F5A6E6",
+    "#783F8E",
+    "#645E9D"
+  ];
+
+  // for (let i = 0; i < data.length; i++) {
+  //   painting.push("#" + Math.floor(Math.random() * 16777215).toString(16));
+  // }
 
   d3.select("#pie-chart").remove();
   d3.select("#bar-chart").remove();
@@ -34,7 +56,7 @@ export const doughnut = dataSet => {
   //   arc generator
   const segments = d3
     .arc()
-    .innerRadius(100)
+    .innerRadius(0)
     .outerRadius(150);
   // .innerRadius(radius - 100);
 
@@ -93,21 +115,22 @@ export const doughnut = dataSet => {
   .append("g")
   .attr("class", "arc")
 
-  sections.append("path")
+  sections
+    .append("path")
     .style("fill", d => colors(d.data.value))
     .transition()
-    .delay(function(d,i) {
-      return i * 100;
+    .delay(function(d, i) {
+      return i * 300;
     })
-    .duration(500)
-    .attrTween('d', function(d) {
-      debugger
-      let i = d3.interpolate(d.startAngle+0.1, d.endAngle);
+    .duration(300)
+    .attrTween("d", function(d) {
+      debugger;
+      let i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
       return function(t) {
         d.endAngle = i(t);
-        return segments(d)
-      }
-    })
+        return segments(d);
+      };
+    });
     // .attr("d", segments)
 
   let legends = svg

@@ -16,36 +16,50 @@ export const barChart = data => {
     d3.select("#bar-chart").remove();
     d3.select("#pie-chart").remove();
     svg = d3.select(".chart").append("svg");
-    let painting = [];
-    for (let i = 0; i < dataSet.length; i++) {
-      let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
-      if (color === "#ffffff") {
-        "#" + Math.floor(Math.random() * 16777215).toString(16);
-      }
-      painting.push(color);
-    }
+    // let painting = [];
+    // for (let i = 0; i < dataSet.length; i++) {
+    //   let color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    //   if (color === "#ffffff") {
+    //     "#" + Math.floor(Math.random() * 16777215).toString(16);
+    //   }
+    //   painting.push(color);
+    // }
+
+  let painting = [
+    "#058ED9",
+    "#A1E8AF",
+    "#73628A",
+    "#E7BB41",
+    "#44BBA4",
+    "#FA7921",
+    "#E63462",
+    "#17BEBB",
+    "#FE5F55",
+    "#DD99BB",
+    "#06D6A0",
+    "#087E8B",
+    "#FF5A5F",
+    "#70EE9C",
+    "#073B3A",
+    "#08A045",
+    "#CA054D",
+    "#F5A6E6",
+    "#783F8E",
+    "#645E9D"
+  ];
 
     function responsivefy(svg) {
-      // get container + svg aspect ratio
       var container = d3.select(svg.node().parentNode),
         width = parseInt(svg.style("width")),
         height = parseInt(svg.style("height")),
         aspect = width / height;
-
-      // add viewBox and preserveAspectRatio properties,
-      // and call resize so that svg resizes on inital page load
       svg
         .attr("viewBox", "0 0 " + width + " " + height)
         .attr("perserveAspectRatio", "xMinYMid")
         .call(resize);
 
-      // to register multiple listeners for same event type,
-      // you need to add namespace, i.e., 'click.foo'
-      // necessary if you call invoke this function for multiple svgs
-      // api docs: https://github.com/mbostock/d3/wiki/Selections#on
       d3.select(window).on("resize." + container.attr("id"), resize);
 
-      // get width of container and resize svg to fit it
       function resize() {
         var targetWidth = parseInt(container.style("width"));
         svg.attr("width", targetWidth);
@@ -165,34 +179,6 @@ export const barChart = data => {
         return i * 100;
       });
 
-    // svg
-    //   .selectAll("labels")
-    //   .data(dataSet)
-    //   .enter()
-    //   .append("text")
-    //   .classed("label", true)
-    //   .text(d => {
-    //     let upperCaseLabel = d.label.split("_");
-    //     upperCaseLabel = upperCaseLabel
-    //       .map(word => {
-    //         return word[0].toUpperCase() + word.slice(1);
-    //       })
-    //       .join(" ");
-    //     return `${upperCaseLabel}`;
-    //   })
-    //   .attr("text-anchor", "end")
-    //   .attr("transform", function(d, i) {
-    //     return (
-    //       "translate( " +
-    //       (bandScale(d.label) + bandScale.bandwidth() / 2) +
-    //       " , " +
-    //       (h - 70) +
-    //       ")," +
-    //       "rotate(0)"
-    //     );
-    //   })
-    //   .attr("x", 0)
-    //   .attr("y", 0);
   };
 
   if (dataSet.length === 0) {

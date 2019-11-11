@@ -19,14 +19,14 @@ body {
   display: flex;
   /*     padding-top: 20px; */
   /*     padding-bottom: 20px; */
-  background-color: #3da35d;
+  background-color: #3a405a;
   box-sizing: content-box;
 }
 
 .main-left {
   width: 50%;
   display: flex;
-  background-color: #3da35d;
+  background-color: #3a405a;
   padding: 20px 0;
 }
 
@@ -304,74 +304,4 @@ div > label {
   border-radius: 4px;
 }
 
-[class*="icono"] {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  color: #666;
-  box-sizing: border-box;
-  &:after,
-  &:before {
-    content: "";
-    box-sizing: border-box;
-  }
-}
 
-[class*="icono-arrow4"] {
-  width: 0;
-  height: 0;
-  border: 7px solid transparent;
-  border-top: 7px solid;
-  border-right: 7px solid;
-  margin: 15px;
-  &[class*="-left"] {
-    transform: rotate(45deg);
-    &[class*="-up"] {
-      transform: none;
-    }
-    &[class*="-down"] {
-      transform: rotate(90deg);
-    }
-  }
-  &[class*="-right"] {
-    transform: rotate(-135deg);
-    &[class*="-up"] {
-      transform: rotate(-90deg);
-    }
-    &[class*="-down"] {
-      transform: rotate(180deg);
-    }
-  }
-  &[class*="-up"] {
-    transform: rotate(-45deg);
-  }
-  &[class*="-down"] {
-    transform: rotate(135deg);
-  }
-}
-
-.arrows {
-  width: 720px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-}
-.arrows .icono-arrow4-up:nth-child(1) {
-  right: 2.2%;
-}
-
-.arrows .icono-arrow4-up:nth-child(2) {
-  right: 3%;
-}
-
-.arrows .icono-arrow4-up:nth-child(3) {
-  right: -1.5%;
-}
-
-.arrows .icono-arrow4-up:nth-child(4) {
-  right: -2%;
-}
-
-.arrows .icono-arrow4-up:nth-child(5) {
-  right: 1%;
-}

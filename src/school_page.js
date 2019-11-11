@@ -16,18 +16,18 @@ const schoolPage = info => {
     demographicsGender
   } = info;
 
-  debugger
+  debugger;
 
   let promptUser = document.getElementsByClassName("prompt-user-container")[0];
   if (promptUser !== undefined) {
     promptUser.className = "hidden";
   }
-  debugger
+  debugger;
 
   let schoolPage = document.getElementById("school-page");
-  debugger
+  debugger;
   document.getElementById("school-page-name").textContent = schoolName;
-  debugger
+  debugger;
   schoolPage.classList.remove("hidden");
 
   if (document.getElementsByTagName("svg")[0] !== undefined) {
@@ -54,6 +54,7 @@ const schoolPage = info => {
   document.getElementById("academics-info").addEventListener("click", () => {
     removeSpinner();
     barChartPercentage(academics);
+    
   });
 
   document
@@ -87,7 +88,7 @@ const schoolPage = info => {
 
   function currencyFormat(num) {
     if (num === null) {
-      return "N/A"
+      return "N/A";
     }
 
     return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -95,10 +96,10 @@ const schoolPage = info => {
 
   function generalStatsFormat(data) {
     if (data[0] === null) {
-      return "N/A"
+      return "N/A";
     }
 
-    return `${(data * 100).toFixed(2)}%`
+    return `${(data * 100).toFixed(2)}%`;
   }
 
   function titleCase(string) {

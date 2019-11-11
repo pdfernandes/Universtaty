@@ -30,8 +30,6 @@ document.getElementById("btn").addEventListener("click", () => {
                     schoolPageContainer(school);
                 }
             });
-    
-            //begin school page
         })
     });
   });
