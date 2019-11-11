@@ -6,7 +6,7 @@ As a former high school teacher, a major part of my job was preparing students f
 The project seeks to make the process of looking through universities simple and interactive. Students will be able to search for universities, view statistics on gender demographics, majors and more.
 
 ## Technologies 
-* D3
+* D3.js
   * D3 is used to create pie charts and bar charts to display statistics
 * JS
   * Javascript will comprise the front-end of the project.
@@ -34,20 +34,12 @@ The project seeks to make the process of looking through universities simple and
   * The map will have onClick event listeners to delve deeper into college statistics.
 
  * Day 4 - Implement data visualization for university statistics
-   * universities will display post graduation employment
-   * doughnut charts will break down diversity
-   * charts will display graduation statistics
-
-* Day 5 - Implement a leaderboard table which sorts universities by most desired criteria
-  * Filter search and style the leader to be interactive and show snapshot of information.
+   * universities will display graduation rate, prices and retention rates.
+   * pie charts break down diversity and gender statics
+   * bar charts display major percentages, and testing scores.
 
 * Day 6 - Styling Day
   * Work on cleaning up any styling
-
-## Bonus Features
-* Users can compare two or more universities to each other
-* Users can look at universities by major and compare job prospects against the bls job projections.
-* Users can choose universities that are within a certain radius of a desired location.
 
 
 ## Wireframe
