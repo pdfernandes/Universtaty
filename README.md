@@ -3,11 +3,11 @@
 ## Overview 
 As a former high school teacher, a major part of my job was preparing students for university. Students were always overwhelmed by the vast and convoluted college pamphlets and brochures. This visualization if an objective view on college statistics that is meant to be easily digestible.
 
-The project seeks to make the process of looking through universities simple and interactive. Students will be able to filter locations as well as a plethora of other statistics including but not limited to, diversity, standardized scores and graduation rates. Prospective students will then be able to pin different universities and compare their statistics.
+The project seeks to make the process of looking through universities simple and interactive. Students will be able to search for universities, view statistics on gender demographics, majors and more.
 
 ## Technologies 
 * D3
-  * D3 will be used to chart the statistics between various universities.
+  * D3 is used to create pie charts and bar charts to display statistics
 * JS
   * Javascript will comprise the front-end of the project.
 * Various APIs
@@ -15,9 +15,8 @@ The project seeks to make the process of looking through universities simple and
     * Api used for getting university data. 
   * Google Maps API
     * Allow users to get a location of their universities on a map.
-  * MediaWiki API 
-    * https://www.mediawiki.org/wiki/API:Main_page
-    * used for photos and college about me information
+  * Anime.js
+    * Used to animate various DOM elements on the page.
 
 
 ## Project Timeline
