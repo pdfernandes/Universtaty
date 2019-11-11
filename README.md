@@ -1,23 +1,27 @@
 # Universtaty 
+<p align='center'>
+ <img src='https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/graduation_cap_favicon.png' width='150'/>
+</p>
 
 ## Overview 
 As a former high school teacher, a major part of my job was preparing students for university. Students were always overwhelmed by the vast and convoluted college pamphlets and brochures. This visualization if an objective view on college statistics that is meant to be easily digestible.
 
-The project seeks to make the process of looking through universities simple and interactive. Students will be able to search for universities, view statistics on gender demographics, majors and more.
+The project seeks to make the process of looking through universities simple and interactive. Students are able to search for universities, view statistics on gender demographics, majors and more!
+
+## Content
+* [Technologies](technologies)
+* [Project Timeline](project-timeline)
 
 ## Technologies 
 * D3.js
-  * D3 is used to create pie charts and bar charts to display statistics
-* JS
-  * Javascript will comprise the front-end of the project.
-* Various APIs
+* JavaScript
+* webpack
+* Anime.js
+* APIs
   * https://collegescorecard.ed.gov/data/ & https://nces.ed.gov/ipeds/use-the-data
     * Api used for getting university data. 
   * Google Maps API
     * Allow users to get a location of their universities on a map.
-  * Anime.js
-    * Used to animate various DOM elements on the page.
-
 
 ## Project Timeline
 
@@ -40,7 +44,6 @@ The project seeks to make the process of looking through universities simple and
 
 * Day 6 - Styling Day
   * Work on cleaning up any styling
-
 
 ## Wireframe
 ![display](https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/staty_wf.png)
