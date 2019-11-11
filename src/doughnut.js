@@ -7,14 +7,7 @@ export const doughnut = dataSet => {
     return ele.value !== 0 && ele.value !== null;
   });
   prepareChartArea()
-  debugger;
 
-  // if (data.length === 0) {
-  //   nullValueIndicator();
-  //   return;
-  // } else {
-  //   prepareChartArea();
-  // }
 
   let painting = [
     "#058ED9",
@@ -124,7 +117,6 @@ export const doughnut = dataSet => {
     })
     .duration(300)
     .attrTween("d", function(d) {
-      debugger;
       let i = d3.interpolate(d.startAngle + 0.1, d.endAngle);
       return function(t) {
         d.endAngle = i(t);

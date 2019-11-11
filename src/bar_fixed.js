@@ -6,7 +6,6 @@ export const barChart = data => {
     return ele.value !== 0 && ele.value !== null;
   });
 
-  debugger;
   dataSet.forEach((datum, i) => {
     return (datum.order = i);
   });

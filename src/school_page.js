@@ -3,7 +3,6 @@ import { doughnut } from "./doughnut";
 import { barChart } from "./bar_fixed";
 import anime from "animejs/lib/anime.es.js";
 
-
 const schoolPage = info => {
   let {
     schoolName,
@@ -18,33 +17,20 @@ const schoolPage = info => {
     demographicsGender
   } = info;
 
-  debugger;
-
   let promptUser = document.getElementsByClassName("prompt-user-container")[0];
   if (promptUser !== undefined) {
     promptUser.className = "hidden";
   }
-  debugger;
 
   let schoolPage = document.getElementById("school-page");
-  debugger;
+
   document.getElementById("school-page-name").textContent = schoolName;
-  debugger;
 
   schoolPage.classList.remove("hidden");
-
 
   if (document.getElementsByTagName("svg")[0] !== undefined) {
     barChartPercentage(academics);
   }
-
-  //   school.className = "active";
-  //   let div = document.createElement("div");
-  //   div.className = 'school-info-buttons'
-  //   div.textContent = "Hello my name is div"
-  //   schoolPage.appendChild(div);
-
-  //DRY this
 
   function removeSpinner() {
     let spinner = document.getElementsByClassName("prompt-user-button")[0];
@@ -58,7 +44,6 @@ const schoolPage = info => {
   document.getElementById("academics-info").addEventListener("click", () => {
     removeSpinner();
     barChartPercentage(academics);
-
   });
 
   document
@@ -119,7 +104,6 @@ const schoolPage = info => {
   const createList = input => {
     let ul = document.createElement("ul");
     input.forEach(ele => {
-      debugger;
       let listElement = document.createElement("li");
       listElement.innerHTML = `
       <h3>${titleCase(ele.label)}</h3>
@@ -127,7 +111,7 @@ const schoolPage = info => {
       `;
       ul.appendChild(listElement);
     });
-    debugger;
+
     return ul.outerHTML;
   };
 

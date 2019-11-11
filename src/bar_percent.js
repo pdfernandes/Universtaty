@@ -5,7 +5,6 @@ export const barChartPercentage = data => {
   let dataSet = data.filter(ele => {
     return ele.value !== 0 && ele.value !== null;
   });
-  debugger;
   dataSet.forEach((datum, i) => {
     return (datum.order = i);
   });

@@ -12,12 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.getElementById("btn").addEventListener("click", () => {
   let infoWindow = new google.maps.InfoWindow({});
-  debugger
   window.infoWindow = infoWindow;
   google.maps.event.addListener(window.infoWindow, "domready", () => {
-    debugger
     document.getElementById("more-info").addEventListener("click", (e) => {
-      debugger
         let schoolName = e.target.previousSibling.textContent;
         sessionStorage.setItem('schoolName', schoolName) 
         
@@ -68,11 +65,8 @@ document.getElementById("btn").addEventListener("click", () => {
 
 
   removeMarkers();
-  // let options = [];
   const value = document.getElementsByClassName("search-name")[0].value;
-  // options.push(value);
   fetchData(value).then(response => {
-    debugger
     formatMarkers(response);
   });
 });
