@@ -16,6 +16,10 @@ The project seeks to make the process of looking through universities simple and
 * [Features](#features)
   * [Homepage](#homepage)
   * [Statistics](#statistics)
+* [DOM Manipulation and Animations](#dom-manipulation-and-animations)
+* [Building a Pie Chart](#building-a-pie-chart)
+* [Credits](#credits)
+
 
 ## Technologies 
 * D3.js 5.12.0
