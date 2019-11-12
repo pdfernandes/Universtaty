@@ -12,6 +12,9 @@ The project seeks to make the process of looking through universities simple and
 * [Technologies](#technologies)
 * [Project Timeline](#project-timeline)
 * [Wireframe](#wireframe)
+* [Features](#features)
+  * [Homepage](#homepage)
+  * [Statistics](#statistics)
 
 ## Technologies 
 * D3.js 5.12.0
@@ -61,10 +64,12 @@ The map is created using the Google Maps API.
 </p>
 
 ### Statistics
-Several buttons allow the user to shift between different statistics. Pie charts and bar charts display information on gender, race, majors and test scores. Users can see at-a-glance information regarding graduation rates, prices and financial aid. Charts are created and animated using D3. DOM manipulation between sections is handled using D3 and animejs animation libraries.
+Several buttons allow the user to shift between different statistics. Pie charts and bar charts display information on gender, race, majors and test scores. Users can see at-a-glance information regarding graduation rates, prices and financial aid. Charts are created and animated using D3. DOM manipulation is handled by D3 and animejs animation libraries.
 <p align='center'>
  <img src='https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/universtaty_charts.gif' alt='homepage' width='500'/>
 </p>
+
+##
 
 
 
