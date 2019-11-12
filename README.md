@@ -1,4 +1,5 @@
-# Universtaty 
+# Universtaty
+### **[Live Site](http://phelipe.io/Universtaty/)**
 <p align='center'>
  <img src='https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/graduation_cap_favicon.png' width='150'/>
 </p>
@@ -26,7 +27,7 @@ The project seeks to make the process of looking through universities simple and
 * APIs
   * https://collegescorecard.ed.gov/data/ & https://nces.ed.gov/ipeds/use-the-data
     * Api used for getting university data. 
-  * Google Maps API
+  * Google Maps
     * Allow users to get a location of their universities on a map.
 
 ## Project Timeline
@@ -165,6 +166,12 @@ const segments = d3
       };
     });
 ```
+## Credits
+* **[D3](https://d3js.org/)**
+* **[Animejs](https://animejs.com/)**
+* **[Google Maps](https://cloud.google.com/maps-platform/)**
+* **[College Scorecard](https://collegescorecard.ed.gov/data/documentation/)**
+* **[Font Awesome](https://fontawesome.com/)**
 
 
 
