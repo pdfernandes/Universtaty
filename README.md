@@ -14,10 +14,12 @@ The project seeks to make the process of looking through universities simple and
 * [Wireframe](#wireframe)
 
 ## Technologies 
-* D3.js
-* JavaScript
-* webpack
-* Anime.js
+* D3.js 5.12.0
+* JavaScript 9
+* Webpack 4.41.2
+* CSS3
+* HTML5
+* Animejs 3.1.0
 * APIs
   * https://collegescorecard.ed.gov/data/ & https://nces.ed.gov/ipeds/use-the-data
     * Api used for getting university data. 
@@ -48,6 +50,22 @@ The project seeks to make the process of looking through universities simple and
 
 ## Wireframe
 ![display](https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/staty_wf.png)
+
+## Features
+
+### Homepage
+The homepage includes the search section, a map and a directions container. Users can search by school name. Names do not have to be specific (example: If "New York" is typed into the search, all schools with "New York" will be populated on the map). Users can see where the school is located via markers and by clicking on a marker, users can see more school information.
+The map is created using the Google Maps API.
+<p align='center'>
+ <img src='https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/universtaty_display.gif' alt='homepage' width='500'/>
+</p>
+
+### Statistics
+Several buttons allow the user to shift between different statistics. Pie charts and bar charts display information on gender, race, majors and test scores. Users can see at-a-glance information regarding graduation rates, prices and financial aid. Charts are created and animated using D3. DOM manipulation between sections is handled using D3 and animejs animation libraries.
+<p align='center'>
+ <img src='https://github.com/pdfernandes/Universtaty/blob/master/src/styles/assets/universtaty_charts.gif' alt='homepage' width='500'/>
+</p>
+
 
 
 
