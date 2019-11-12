@@ -1,18 +1,12 @@
-html {
-  height: 100%;
-}
 body {
-  display: flex;
-  flex-direction: column;
   font-family: "Montserrat", sans-serif;
   background-color: whitesmoke;
-  height: 100%;
 }
 
 #root {
+  height:100vh;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .main {
@@ -33,10 +27,12 @@ body {
 .heading-search-container {
   margin: 0 auto;
   background-color: #ffffff;
-  box-sizing: border-box;
+  box-sizing: content-box;
   padding: 30px;
   border-radius: 5px;
   border: 1px solid #588b8b;
+  width: 40%;
+  position: relative;
 }
 
 .title {
@@ -46,6 +42,7 @@ body {
 
 .title > h1 {
   font-size: 40px;
+  text-align: center;
 }
 
 .title > h2 {
@@ -54,16 +51,20 @@ body {
 }
 
 .search-bar {
-  height: 50%;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .plugs {
+  position: absolute;
   display: flex;
   justify-content: flex-end;
+  right: 10px;
+  bottom: 7px;
 }
 
 .plugs > a {
@@ -85,11 +86,16 @@ div > label {
 }
 
 .search-name {
-  padding: 6px 6px;
+  box-sizing: border-box;
+  padding: 6px 10px;
   border: 1px solid #090474;
   border-radius: 8px;
   width: 100%;
   background-color: white;
+}
+
+.search-name::placeholder{
+  text-align: center;
 }
 
 #btn {
@@ -125,138 +131,14 @@ div > label {
 .active {
   display: block;
 }
-
-#school-page {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.school-page-main {
-  width: 50%;
-}
-
-#school-page-name {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 800;
-  border-bottom: 1px solid #ffeaee;
-  background-color: #8da7be;
-  color: white;
-  padding: 4px;
-}
-
-.school-info-buttons {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  max-width: 720px;
-}
-
-.school-info-buttons > button {
-  font-size: 12px;
-  margin: 4px 4px;
-  text-align: center;
-  padding: 4px 6px;
-  background: #3a405a;
-  font-weight: 800;
-  color: white;
-  border-radius: 4px;
-}
-
-.school-info-buttons > button:hover {
-  background-color: #8da7be;
-}
-
-.school-page-side-container {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  background-color: #3a405a;
-  justify-content: center;
-  align-items: center;
-}
-
-.school-page-side {
-  background-color: white;
-  height: 100%;
-  width: 70%;
-  margin: 35px;
-  border-radius: 4px;
-}
-
-.at-a-glance {
-  display: flex;
-  justify-content: center;
-  background-color: #8da7be;
-  box-sizing: border-box;
-  border-radius: 4px 4px 0 0;
-  margin: 0 0 10px 0;
-  padding: 5px 0px;
-}
-
-.at-a-glance > h1 {
-  font-size: 28px;
-  font-weight: 800;
-  color: white;
-  margin-bottom: 5px;
-}
-
-.at-a-glance-info > h1 {
-  margin-bottom: 20px;
-}
-
-#general-stats {
-  margin: 0 auto;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#general-stats > div {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#general-stats > div > h1 {
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.cost-info > h1 {
-  margin-bottom: 6px;
-}
-
-.cost-info > ul {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-.cost-info > ul > li {
-  margin: 0px 15px;
-  text-align: center;
-}
-
-.cost-info > ul > li > h3 {
-  font-size: 14px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.cost-info > ul > li > h4 {
-  font-size: 14px;
-}
-
 .prompt-user-container {
-  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  width:100%;
+  flex-grow: 1;
 }
+
 
 .prompt-user {
   display: flex;
@@ -266,7 +148,6 @@ div > label {
   text-align: center;
   justify-content: space-evenly;
   margin: 0 auto;
-  height: 30%;
   background-color: #39a0ed;
   padding: 50px;
   color: white;
@@ -287,21 +168,167 @@ div > label {
   font-size: 12px;
 }
 
+
+#school-page {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.school-page-main {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+#school-page-name {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  border-bottom: 1px solid #ffeaee;
+  background-color: #8da7be;
+  color: white;
+  padding: 4px;
+}
+
+.school-info-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.school-info-buttons > button {
+  font-size: 12px;
+  margin: 4px 4px;
+  text-align: center;
+  padding: 4px 6px;
+  background: #3a405a;
+  font-weight: 800;
+  color: white;
+  border-radius: 4px;
+}
+
+.school-info-buttons > button:hover {
+  background-color: #8da7be;
+}
+
+.chart-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
 .prompt-user-button {
   display: flex;
   flex-direction: column;
   text-align: center;
   margin: 0 auto;
+  flex-grow:0;
+  width: 80%;
 }
 
+
 .prompt-user-button > h1 {
-  margin: 10%;
   padding: 40px;
 }
+
+#pie-chart {
+  display:block;
+  margin: auto;
+}
+
+#bar-chart {
+  display:block;
+  margin: auto;
+}
+
+
+.school-page-side-container {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  background-color: #3a405a;
+  justify-content: center;
+  align-items: center;
+}
+
+.school-page-side {
+  background-color: white;
+  width: 70%;
+  border-radius: 4px;
+}
+
+.at-a-glance {
+  display: flex;
+  justify-content: center;
+  background-color: #8da7be;
+  box-sizing: border-box;
+  border-radius: 4px 4px 0 0;
+  margin: 0;
+  padding: 5px 0px;
+}
+
+.at-a-glance > h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 5px;
+}
+
+
+#general-stats {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+#general-stats > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0;
+}
+
+#general-stats > div > h1 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.cost-info > h1 {
+  margin-bottom: 10px;
+}
+
+.cost-info > ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.cost-info > ul > li {
+  text-align: center;
+  width: 33.333%;
+}
+
+.cost-info > ul > li > h3 {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.cost-info > ul > li > h4 {
+  font-size: 14px;
+}
+
+
+
 
 .rotation {
   font-size: 8px;
 }
+
 
 .null-warning {
   display: flex;
