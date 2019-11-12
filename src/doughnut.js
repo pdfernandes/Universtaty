@@ -6,8 +6,7 @@ export const doughnut = dataSet => {
   let data = dataSet.filter(ele => {
     return ele.value !== 0 && ele.value !== null;
   });
-  prepareChartArea()
-
+  prepareChartArea();
 
   let painting = [
     "#058ED9",
@@ -45,13 +44,31 @@ export const doughnut = dataSet => {
     width = 750,
     height = 360;
   // radius = width / 4;
+  
+  function responsivefy(svg) {
+    var container = d3.select(svg.node().parentNode),
+      width = parseInt(svg.style("width")),
+      height = parseInt(svg.style("height")),
+      aspect = width / height;
 
-  //   arc generator
+    svg
+      .attr("viewBox", "0 0 " + width + " " + height)
+      .attr("perserveAspectRatio", "xMinYMid")
+      .call(resize);
+
+    d3.select(window).on("resize." + container.attr("id"), resize);
+
+    function resize() {
+      var targetWidth = parseInt(container.style("width"));
+      svg.attr("width", targetWidth);
+      svg.attr("height", Math.round(targetWidth / aspect));
+    }
+  }
+
   const segments = d3
     .arc()
     .innerRadius(0)
     .outerRadius(150);
-  // .innerRadius(radius - 100);
 
   const gen = d3
     .pie()
@@ -60,35 +77,6 @@ export const doughnut = dataSet => {
       return d.value;
     });
 
-  function responsivefy(svg) {
-    // get container + svg aspect ratio
-    var container = d3.select(svg.node().parentNode),
-      width = parseInt(svg.style("width")),
-      height = parseInt(svg.style("height")),
-      aspect = width / height;
-
-    // add viewBox and preserveAspectRatio properties,
-    // and call resize so that svg resizes on inital page load
-    svg
-      .attr("viewBox", "0 0 " + width + " " + height)
-      .attr("perserveAspectRatio", "xMinYMid")
-      .call(resize);
-
-    // to register multiple listeners for same event type,
-    // you need to add namespace, i.e., 'click.foo'
-    // necessary if you call invoke this function for multiple svgs
-    // api docs: https://github.com/mbostock/d3/wiki/Selections#on
-    d3.select(window).on("resize." + container.attr("id"), resize);
-
-    // get width of container and resize svg to fit it
-    function resize() {
-      var targetWidth = parseInt(container.style("width"));
-      svg.attr("width", targetWidth);
-      svg.attr("height", Math.round(targetWidth / aspect));
-    }
-  }
-
-  //   define svg
 
   const svg = d3
     .select(".chart")
@@ -101,12 +89,11 @@ export const doughnut = dataSet => {
     .call(responsivefy);
 
   const sections = svg
-  // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-  .selectAll(".arc")
-  .data(gen(data))
-  .enter()
-  .append("g")
-  .attr("class", "arc")
+    .selectAll(".arc")
+    .data(gen(data))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
 
   sections
     .append("path")
@@ -123,7 +110,6 @@ export const doughnut = dataSet => {
         return segments(d);
       };
     });
-    // .attr("d", segments)
 
   let legends = svg
     .append("g")
