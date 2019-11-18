@@ -37,12 +37,12 @@ The project seeks to make the process of looking through universities simple and
 ## Project Timeline
 
 ### Explore D3, set up tentative file structure (11/4/19 - 1 Day) 
-  * Go through d3 documentation and outline essential aspects that will be utilizedin the project.
+  * Go through d3 documentation and outline essential aspects that will be utilized in the project.
   * Set up the project directory and file skeleton.
   * Set up webpack.
 
 ### Implement search functionality (11/5/19 - 1 Day)
-  * Users able to search for universities.
+  * Users are able to search for universities.
   * Search field finds all schools that matches the text in the input field.
 
 ### Implement Google Maps API (11/6/10 - 1 Day)
@@ -50,12 +50,12 @@ The project seeks to make the process of looking through universities simple and
   * The map will have onClick event listeners to delve deeper into college statistics.
 
 ### Implement data visualization for university statistics using D3.js (11/7/19 - 3 Days)
-   * universities will display graduation rate, prices and financial aid.
-   * pie charts break down diversity and gender statics.
-   * bar charts display major percentages, and testing scores including SAT and ACT.
+   * Universities display graduation rate, prices and financial aid.
+   * Pie charts break down diversity and gender statics.
+   * Bar charts display major percentages, and testing scores including SAT and ACT.
 
 ### Styling Day (11/10/19 - 1 Day)
-  * Work on CSS to style page.
+  * CSS to style page.
   * Incorporate Animejs library for additional DOM manipulation.
 
 ## Wireframe
