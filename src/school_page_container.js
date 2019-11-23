@@ -19,10 +19,17 @@ const schoolPageContainer = school => {
   for (let category in school) {
     let splitCategory = category.split(".");
     if (splitCategory.includes("academics")) {
-      academics.push({
-        label: splitCategory[splitCategory.length - 1],
-        value: school[category]
-      });
+      if (Array.isArray(school[category])) {
+         academics.push({
+           label: splitCategory[splitCategory.length - 1],
+           value: school[category][0]
+         });
+      } else {
+        academics.push({
+          label: splitCategory[splitCategory.length - 1],
+          value: school[category]
+        });
+      }
     } else if (splitCategory.includes("admissions")) {
       if (splitCategory.includes("act_scores")) {
         admissionsACT.push({
